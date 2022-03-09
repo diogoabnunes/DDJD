@@ -2,34 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BackgroundScroller : MonoBehaviour
-{
-    public BoxCollider2D backgroundCollider;
+public class Obstacle : MonoBehaviour
+{   
+    public BoxCollider2D obstacleCollider;
     public Rigidbody2D rb;
     private float width;
     private GameSettings gameSettings;
+    private Vector2 screenBounds;
 
     // Start is called before the first frame update
     void Start()
     {
-        backgroundCollider = GetComponent<BoxCollider2D>();
+        obstacleCollider = GetComponent<BoxCollider2D>();
         rb = GetComponent<Rigidbody2D>();
         gameSettings = FindObjectsOfType<GameSettings>()[0];
-
-        width = backgroundCollider.size.x * transform.localScale.x;
-        backgroundCollider.enabled = false;
-
+       
+        width = obstacleCollider.size.x * transform.localScale.x;
         rb.velocity = new Vector2(gameSettings.scrollSpeed,0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.x < (-width*1.5)){
-            Vector2 resetPosition = new Vector2(width * 3f, 0);
-            transform.position = (Vector2)transform.position + resetPosition;
-        }
-       
         rb.velocity = new Vector2(rb.velocity.x - gameSettings.speedIncrement,0);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision){
+        if(collision.tag == "Border"){
+            Destroy(this.gameObject);
+        }
     }
 }
