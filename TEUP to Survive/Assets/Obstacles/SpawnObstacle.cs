@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class SpawnObstacle : MonoBehaviour
 {
-    [SerializeField] private GameObject[] obstacles;
-    [SerializeField] private float minX;
+    [SerializeField] private GameObject obstacle;
     [SerializeField] private float minY;
-    [SerializeField] private float maxX;
     [SerializeField] private float maxY;
     [SerializeField] private float timeBetweenObstacles;
     private float spawnTime;
+    private GameSettings gameSettings;
+
+     // Start is called before the first frame update
+    void Start()
+    {
+       gameSettings = FindObjectsOfType<GameSettings>()[0];
+    }
 
     // Update is called once per frame
     void Update()
@@ -22,11 +27,9 @@ public class SpawnObstacle : MonoBehaviour
     }
 
     void Spawn(){
-
-        float x = Random.Range(minX, maxX);
         float y = Random.Range(minY, maxY);
 
-        Instantiate(obstacles[0], transform.position + new Vector3(x,y,0), transform.rotation);
+        // Instantiate(obstacle, transform.position + new Vector3(0,y,0), transform.rotation);
         // Instantiate(obstacles[1], transform.position + new Vector2(x,y), transform.rotation);
     }
 }
