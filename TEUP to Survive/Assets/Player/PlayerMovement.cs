@@ -7,19 +7,21 @@ public class PlayerMovement : MonoBehaviour
     public float speed;
     public Rigidbody2D rb;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private bool jump = false;
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKey(KeyCode.Space))
         {
-            Debug.Log("Hey");
-            rb.AddForce(Vector3.up * 1.2f * speed);
+            jump = true;
+        }
+    }
+
+    void FixedUpdate() {
+        if (jump) {
+            rb.AddForce(Vector2.up * 1.2f * speed, ForceMode2D.Impulse);
+            jump = false;
         }
     }
 }
