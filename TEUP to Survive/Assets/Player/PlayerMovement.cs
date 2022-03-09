@@ -18,7 +18,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space))
         {
-            Debug.Log("Hey");
             rb.AddForce(Vector3.up * 1.2f * speed);
         }
     }
