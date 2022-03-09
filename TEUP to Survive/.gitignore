@@ -95,3 +95,7 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# Put here by: Diogo Santos 
+# Problems with vscode
+.vscode
