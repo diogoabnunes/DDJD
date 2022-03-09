@@ -7,19 +7,20 @@ public class BackgroundScroller : MonoBehaviour
     public BoxCollider2D collider;
     public Rigidbody2D rb;
     private float width;
-    private float speedIncrement = 0.0001f;
-    private float scrollSpeed = -2f;
+    private GameManager myParent;
 
     // Start is called before the first frame update
     void Start()
     {
         collider = GetComponent<BoxCollider2D>();
         rb = GetComponent<Rigidbody2D>();
+        myParent = transform.parent.GetComponent<GameManager>();
+        
         width = collider.size.x * transform.localScale.x;
         collider.enabled = false;
-
-        rb.velocity = new Vector2(scrollSpeed,0);
-        
+        Debug.Log(this.transform.parent.GetComponent<GameManager>().scrollSpeed);
+        rb.velocity = new Vector2(myParent.scrollSpeed,0);
+ 
     }
 
     // Update is called once per frame
@@ -29,7 +30,7 @@ public class BackgroundScroller : MonoBehaviour
             Vector2 resetPosition = new Vector2(width * 3f, 0);
             transform.position = (Vector2)transform.position + resetPosition;
         }
-       
-        rb.velocity = new Vector2(rb.velocity.x - speedIncrement,0);
+
+        rb.velocity = new Vector2(rb.velocity.x - myParent.speedIncrement,0);
     }
 }
