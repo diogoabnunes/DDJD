@@ -32,7 +32,7 @@ public class Obstacle : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision){
         if(collision.tag == "Border"){
             Destroy(this.gameObject);
-        }else if (collision.tag == "Player"){
+        }else if (collision.tag == "Player" && (!player.GetComponent<PlayerMovement>().unstoppable)){
             Destroy(player.gameObject);
             // POR AGORA ESTÁ A SAIR DO JOGO QUANDO PERDE!
            UnityEditor.EditorApplication.isPlaying = false;
