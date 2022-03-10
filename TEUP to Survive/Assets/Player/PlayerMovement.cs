@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public float speed;
     public Rigidbody2D rb;
     public bool unstoppable;// power-up effect (coffee??)
+    private bool jump = false;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +20,14 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space))
         {
-            rb.AddForce(Vector3.up * 1.2f * speed);
+            jump = true;
+        }
+    }
+
+    void FixedUpdate() {
+        if (jump) {
+            rb.AddForce(Vector2.up * 1.2f * speed, ForceMode2D.Impulse);
+            jump = false;
         }
     }
 }
