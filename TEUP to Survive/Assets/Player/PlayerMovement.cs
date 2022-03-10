@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate() {
         if (jump) {
-            rb.AddForce(Vector2.up * 1.2f * speed, ForceMode2D.Impulse);
+            rb.AddForce(Vector2.up * 7.5f * speed);
             jump = false;
         }
     }
