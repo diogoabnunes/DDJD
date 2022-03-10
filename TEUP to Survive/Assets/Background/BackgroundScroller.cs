@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class BackgroundScroller : MonoBehaviour
 {
-    public BoxCollider2D collider;
+    public BoxCollider2D backgroundCollider;
     public Rigidbody2D rb;
     private float width;
-    private float speedIncrement = 0.0001f;
-    private float scrollSpeed = -2f;
+    private GameSettings gameSettings;
 
     // Start is called before the first frame update
     void Start()
     {
-        collider = GetComponent<BoxCollider2D>();
+        backgroundCollider = GetComponent<BoxCollider2D>();
         rb = GetComponent<Rigidbody2D>();
-        width = collider.size.x * transform.localScale.x;
-        collider.enabled = false;
+        gameSettings = FindObjectsOfType<GameSettings>()[0];
 
-        rb.velocity = new Vector2(scrollSpeed,0);
-        
+        width = backgroundCollider.size.x * transform.localScale.x;
+        backgroundCollider.enabled = false;
+
+        rb.velocity = new Vector2(gameSettings.scrollSpeed,0);
     }
 
     // Update is called once per frame
@@ -30,6 +30,6 @@ public class BackgroundScroller : MonoBehaviour
             transform.position = (Vector2)transform.position + resetPosition;
         }
        
-        rb.velocity = new Vector2(rb.velocity.x - speedIncrement,0);
+        rb.velocity = new Vector2(rb.velocity.x - gameSettings.speedIncrement,0);
     }
 }

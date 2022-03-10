@@ -6,8 +6,14 @@ public class PlayerMovement : MonoBehaviour
 {
     public float speed;
     public Rigidbody2D rb;
-
+    public bool unstoppable;// power-up effect (coffee??)
     private bool jump = false;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+       unstoppable = false; 
+    }
 
     // Update is called once per frame
     void Update()
