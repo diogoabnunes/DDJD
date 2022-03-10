@@ -153,8 +153,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstacle: {fileID: 6062321105985182828, guid: 8e6cf701572bfb2419927219fd384ce0, type: 3}
-  minY: 4
-  maxY: -1.5
+  minY: -1.5
+  maxY: 4
   timeBetweenObstacles: 3
 --- !u!4 &364010455
 Transform:
