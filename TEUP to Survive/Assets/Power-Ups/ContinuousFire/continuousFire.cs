@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class unstoppablePowerUp : MonoBehaviour
+public class continuousFire : MonoBehaviour
 {
-    [SerializeField] private BoxCollider2D unstoppableCollider;
+    [SerializeField] private BoxCollider2D continuousFireCollider;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float duration;
     private GameSettings gameSettings;
@@ -12,7 +12,7 @@ public class unstoppablePowerUp : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        unstoppableCollider = GetComponent<BoxCollider2D>();
+        continuousFireCollider = GetComponent<BoxCollider2D>();
         rb = GetComponent<Rigidbody2D>();
         gameSettings = FindObjectsOfType<GameSettings>()[0];
         player = GameObject.FindGameObjectWithTag("Player");
@@ -31,7 +31,7 @@ public class unstoppablePowerUp : MonoBehaviour
         if(collision.tag == "LeftBorder"){
             Destroy(this.gameObject);
         }else if (collision.tag == "Player"){
-            // player.GetComponent<PlayerMovement>().enableUnstoppable(duration);
+            // player.GetComponent<PlayerMovement>().enableContinuousFire(duration);
             Destroy(this.gameObject);
         }
     }
