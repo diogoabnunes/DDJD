@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour
     public float speed;
     public Rigidbody2D rb;
     public bool unstoppable;// power-up effect (coffee??)
+    [SerializeField] private GameObject tigerShot;
+
     private bool jump = false;
 
     // Start is called before the first frame update
@@ -21,6 +23,11 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             jump = true;
+        }
+
+        if (Input.GetKey(KeyCode.Return))
+        {
+            Instantiate(tigerShot, transform.position, transform.rotation);
         }
     }
 
