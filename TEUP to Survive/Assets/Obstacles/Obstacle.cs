@@ -33,7 +33,7 @@ public class Obstacle : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision){
-        if(collision.tag == "Border"){
+        if(collision.tag == "LeftBorder"){
             Destroy(this.gameObject);
         }else if (collision.tag == "Player" && (!player.GetComponent<PlayerMovement>().unstoppable)){
             Destroy(player.gameObject);
