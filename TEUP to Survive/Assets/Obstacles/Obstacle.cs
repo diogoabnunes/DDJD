@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {   
-    public BoxCollider2D obstacleCollider;
-    public Rigidbody2D rb;
-    private float width;
+    [SerializeField] private BoxCollider2D obstacleCollider;
+    [SerializeField] private Rigidbody2D rb;
+
     private GameSettings gameSettings;
-    private Vector2 screenBounds;
     private GameObject player;
 
     // Start is called before the first frame update
@@ -19,14 +18,18 @@ public class Obstacle : MonoBehaviour
         gameSettings = FindObjectsOfType<GameSettings>()[0];
         player = GameObject.FindGameObjectWithTag("Player");
        
-        width = obstacleCollider.size.x * transform.localScale.x;
         rb.velocity = new Vector2(gameSettings.scrollSpeed,0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        rb.velocity = new Vector2(rb.velocity.x - gameSettings.speedIncrement,0);
+        
+    }
+
+    void FixedUpdate() {
+        // update movement of obstacle to go with camera movement
+        rb.velocity = new Vector2(rb.velocity.x - gameSettings.speedIncrement, 0);
     }
 
     private void OnTriggerEnter2D(Collider2D collision){

@@ -8,14 +8,8 @@ public class SpawnObstacle : MonoBehaviour
     [SerializeField] private float minY;
     [SerializeField] private float maxY;
     [SerializeField] private float timeBetweenObstacles;
-    private float spawnTime;
-    private GameSettings gameSettings;
 
-     // Start is called before the first frame update
-    void Start()
-    {
-       gameSettings = FindObjectsOfType<GameSettings>()[0];
-    }
+    private float spawnTime;
 
     // Update is called once per frame
     void Update()
@@ -28,6 +22,6 @@ public class SpawnObstacle : MonoBehaviour
 
     void Spawn(){
         float y = Random.Range(minY, maxY);
-        Instantiate(obstacle, transform.position + new Vector3(0,y,0), transform.rotation);
+        Instantiate(obstacle, transform.position + new Vector3(0, y, 0), transform.rotation);
     }
 }

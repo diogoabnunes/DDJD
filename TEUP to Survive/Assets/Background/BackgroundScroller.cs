@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class BackgroundScroller : MonoBehaviour
 {
-    public BoxCollider2D backgroundCollider;
-    public Rigidbody2D rb;
+    [SerializeField] private BoxCollider2D backgroundCollider;
+    [SerializeField] private Rigidbody2D rb;
+
     private float width;
     private GameSettings gameSettings;
 
@@ -22,10 +23,9 @@ public class BackgroundScroller : MonoBehaviour
         rb.velocity = new Vector2(gameSettings.scrollSpeed,0);
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if (transform.position.x < (-width*1.5)){
+        if (transform.position.x < (-width * 1.5)){
             Vector2 resetPosition = new Vector2(width * 3f, 0);
             transform.position = (Vector2)transform.position + resetPosition;
         }
