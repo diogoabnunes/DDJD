@@ -24,7 +24,6 @@ public class TigerShot : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision){
         if(collision.tag == "RightBorder"){
-            Debug.Log("Destroy object");
             Destroy(this.gameObject);
         }
     }

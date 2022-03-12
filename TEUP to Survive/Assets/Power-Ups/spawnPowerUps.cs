@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class spawnPowerUps : MonoBehaviour
 {
-    [SerializeField] private GameObject powerUp;
+    [SerializeField] private GameObject[] powerUps;
     [SerializeField] private float minY;
     [SerializeField] private float maxY;
     [SerializeField] private float timeBetweenPowerUps;
@@ -21,7 +21,8 @@ public class spawnPowerUps : MonoBehaviour
     }
 
     void Spawn(){
+        int randomPowerUp = Random.Range(0,powerUps.Length);
         float y = Random.Range(minY, maxY);
-        Instantiate(powerUp, transform.position + new Vector3(0, y, 0), transform.rotation);
+        Instantiate(powerUps[randomPowerUp], transform.position + new Vector3(0, y, 0), transform.rotation);
     }
 }
