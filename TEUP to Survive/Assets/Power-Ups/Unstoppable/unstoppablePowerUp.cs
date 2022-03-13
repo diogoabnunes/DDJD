@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class unstoppablePowerUp : MonoBehaviour
+public class UnstoppablePowerUp : MonoBehaviour
 {
     [SerializeField] private BoxCollider2D unstoppableCollider;
     [SerializeField] private Rigidbody2D rb;

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class spawnPowerUps : MonoBehaviour
+public class SpawnPowerUps : MonoBehaviour
 {
     [SerializeField] private GameObject[] powerUps;
     [SerializeField] private float minY;

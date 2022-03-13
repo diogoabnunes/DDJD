@@ -792,7 +792,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bae86c41d541df44497920e9ada5c1e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUp: {fileID: 7895042982374333859, guid: 1d568527ea0717f47a74f8402f1677b0, type: 3}
+  powerUps:
+  - {fileID: 1966270341443122201, guid: a4d982b5a1e31c946be21bee2efd6156, type: 3}
+  - {fileID: 7895042982374333859, guid: 1d568527ea0717f47a74f8402f1677b0, type: 3}
+  - {fileID: 236406917796115284, guid: 09ee1fa7417d0ef4c8821f494fe346fe, type: 3}
   minY: -1.5
   maxY: 4
   timeBetweenPowerUps: 5

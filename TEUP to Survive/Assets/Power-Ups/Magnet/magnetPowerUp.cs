@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class magnetPowerUp : MonoBehaviour
+public class MagnetPowerUp : MonoBehaviour
 {
     [SerializeField] private BoxCollider2D magnetCollider;
     [SerializeField] private Rigidbody2D rb;

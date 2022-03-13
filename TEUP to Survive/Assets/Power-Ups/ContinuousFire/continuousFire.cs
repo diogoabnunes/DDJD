@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class continuousFire : MonoBehaviour
+public class ContinuousFire : MonoBehaviour
 {
     [SerializeField] private BoxCollider2D continuousFireCollider;
     [SerializeField] private Rigidbody2D rb;
