@@ -6,4 +6,8 @@ public class GameSettings : MonoBehaviour
 {
     public float scrollSpeed = -2f;
     public float speedIncrement = 0.0001f;
+
+    void FixedUpdate() {
+        scrollSpeed -= speedIncrement;
+    }
 }
