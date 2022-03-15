@@ -129,6 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shot: {fileID: 6535076530886365479, guid: 6500563e15253fb4bbb4d94cd8a7e102, type: 3}
+  maxX: 7.5
 --- !u!50 &4174723986638759581
 Rigidbody2D:
   serializedVersion: 4

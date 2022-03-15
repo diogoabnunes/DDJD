@@ -6,6 +6,7 @@ public class Enemy1 : MonoBehaviour
 {
 
     [SerializeField] private GameObject shot;
+    [SerializeField] private float maxX;
 
     private float coolDown; // how much to wait for the next shot
     private float nextShot; // instant of the next shot
@@ -29,7 +30,7 @@ public class Enemy1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.time > nextShot) {
+        if (CanShot()) {
             Shot();
             nextShot = Time.time + coolDown;
         }
@@ -39,18 +40,40 @@ public class Enemy1 : MonoBehaviour
         Move();
     }
 
+    void Move() {
+        if (transform.position.x != maxX) {
+            MoveHorizontal();
+        }
+        else { 
+            MoveVertical();
+        }
+    }
+
+    void MoveHorizontal() {
+        float x = transform.position.x - 0.1f;
+        if (x < maxX) {
+            x = maxX;
+        } 
+
+        transform.position =  new Vector3(x, transform.position.y, 0);
+    }
+
+    void MoveVertical() {
+        transform.position =  transform.position +  new Vector3(0, direction * speedMovement, 0);
+    }
+
+    bool CanShot() { // if it is stopped in X and if time has passed
+        return transform.position.x == maxX && Time.time > nextShot;
+    }
+
     void Shot() {
         Instantiate(shot, transform.position, transform.rotation);
     }
 
-    void Move() {
-        transform.position = transform.position + new Vector3(0, direction * speedMovement, 0);
-    }
-
     private void OnTriggerEnter2D(Collider2D collision){
-        if(collision.tag == "TigerShot"){
+        if(collision.tag == "TigerShot" && transform.position.x == maxX) {
             numShotsCanTake--;
-            Debug.Log("Atingindo!!!!");
+
             if (numShotsCanTake == 0) {
                 Destroy(this.gameObject);
             }
