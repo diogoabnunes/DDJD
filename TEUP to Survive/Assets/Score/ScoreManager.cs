@@ -10,7 +10,7 @@ public class ScoreManager : MonoBehaviour
     public Text scoreText;
 
     public float score;
-    public float pointsPerSecond = 1f;
+    public float pointsPerSecond = 2f;
 
     private void Awake()
     {
@@ -26,13 +26,13 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        scoreText.text = (int)score + " POINTS!";
+        scoreText.text = (int)score + "";
         score += pointsPerSecond * Time.deltaTime;
     }
 
     public void AddPoints(int points)
     {
         score += (int)points;
-        scoreText.text = (int)score + " POINTS!";
+        scoreText.text = (int)score + "";
     }
 }
