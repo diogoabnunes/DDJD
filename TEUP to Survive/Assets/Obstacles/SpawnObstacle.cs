@@ -8,8 +8,7 @@ public class SpawnObstacle : MonoBehaviour
     [SerializeField] private float minY;
     [SerializeField] private float maxY;
     [SerializeField] private float timeBetweenObstacles;
-
-    private float spawnTime;
+    [SerializeField] private float spawnTime;
 
     // Update is called once per frame
     void Update()
