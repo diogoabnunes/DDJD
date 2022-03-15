@@ -6,11 +6,14 @@ public class PlayerPowerUps : MonoBehaviour
 {   
     private bool unstoppable;
     private GameObject player;
+    private GameObject collectiblesDetector;
     // Start is called before the first frame update
     void Start()
     {
         unstoppable = false;
         player = GameObject.FindGameObjectWithTag("Player");
+        collectiblesDetector = GameObject.FindGameObjectWithTag("Collectibles Detector");
+        collectiblesDetector.SetActive(false);
     }
 
     // Update is called once per frame
@@ -39,5 +42,15 @@ public class PlayerPowerUps : MonoBehaviour
         player.GetComponent<PlayerFire>().SetShotCoolDown(0.2f);
         yield return new WaitForSeconds(duration);
         player.GetComponent<PlayerFire>().SetShotCoolDown(coolDown);
+    }
+
+    public void ActivateAttraction(float duration){
+        StartCoroutine(Attraction(duration));
+    }
+
+    IEnumerator Attraction(float duration){
+        collectiblesDetector.SetActive(true);
+        yield return new WaitForSeconds(duration);
+        collectiblesDetector.SetActive(false);
     }
 }

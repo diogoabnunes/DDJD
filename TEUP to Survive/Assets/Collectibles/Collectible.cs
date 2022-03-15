@@ -6,11 +6,12 @@ public class Collectible : MonoBehaviour
 {
     [SerializeField] private BoxCollider2D collectibleCollider;
     [SerializeField] private Rigidbody2D rb;
-
     private GameSettings gameSettings;
-    private GameObject player;
+    public GameObject player;
+    public float moveSpeed = 17f;
     private ScoreManager scoreCanvas;
     private float pointsPerCollectible = 10f;
+    private CollectibleMovement collectibleMovement;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +21,7 @@ public class Collectible : MonoBehaviour
         gameSettings = FindObjectsOfType<GameSettings>()[0];
         player = GameObject.FindGameObjectWithTag("Player");
         scoreCanvas = FindObjectsOfType<ScoreManager>()[0];
+        collectibleMovement = gameObject.GetComponent<CollectibleMovement>();
 
         rb.velocity = new Vector2(gameSettings.scrollSpeed,0);
     }
@@ -42,6 +44,9 @@ public class Collectible : MonoBehaviour
             Destroy(this.gameObject);
             scoreCanvas.score += (int)pointsPerCollectible;
             scoreCanvas.scoreText.text = (int)scoreCanvas.score + "";
+        }
+        else if (collision.tag == "Collectibles Detector"){
+            collectibleMovement.enabled = true;
         }
     }
 }

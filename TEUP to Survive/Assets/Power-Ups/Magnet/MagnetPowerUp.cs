@@ -31,7 +31,7 @@ public class MagnetPowerUp : MonoBehaviour
         if(collision.tag == "LeftBorder"){
             Destroy(this.gameObject);
         }else if (collision.tag == "Player"){
-            // player.GetComponent<PlayerMovement>().enableAttraction(duration);
+            player.GetComponent<PlayerPowerUps>().ActivateAttraction(duration);
             Destroy(this.gameObject);
         }
     }

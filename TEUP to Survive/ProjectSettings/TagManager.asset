@@ -15,6 +15,7 @@ TagManager:
   - Obstacle
   - Score
   - Enemy
+  - Collectibles Detector
   layers:
   - Default
   - TransparentFX
