@@ -5,11 +5,9 @@ using UnityEngine;
 public class Enemy1Fire : MonoBehaviour
 {
     [SerializeField] private GameObject shot;
-
     [SerializeField] private float coolDown = 1f; // how much to wait for the next shot
+    
     private float nextShot; // instant of the next shot
-
-    [SerializeField] private float numShotsCanTake = 1f; // number of shots that can
 
     void Start() {
         nextShot = 0f;

@@ -10,6 +10,7 @@ TagManager:
   - TopBorder
   - BottomBorder
   - TigerShot
+  - Enemie
   layers:
   - Default
   - TransparentFX
