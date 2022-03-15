@@ -2,22 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Obstacle : MonoBehaviour
-{   
-    [SerializeField] private BoxCollider2D obstacleCollider;
+public class Collectible : MonoBehaviour
+{
+    [SerializeField] private BoxCollider2D collectibleCollider;
     [SerializeField] private Rigidbody2D rb;
 
     private GameSettings gameSettings;
     private GameObject player;
+    private ScoreManager scoreCanvas;
+    private float pointsPerCollectible = 10f;
 
     // Start is called before the first frame update
     void Start()
     {
-        obstacleCollider = GetComponent<BoxCollider2D>();
+        collectibleCollider = GetComponent<BoxCollider2D>();
         rb = GetComponent<Rigidbody2D>();
         gameSettings = FindObjectsOfType<GameSettings>()[0];
         player = GameObject.FindGameObjectWithTag("Player");
-       
+        scoreCanvas = FindObjectsOfType<ScoreManager>()[0];
+
         rb.velocity = new Vector2(gameSettings.scrollSpeed,0);
     }
 
@@ -28,17 +31,17 @@ public class Obstacle : MonoBehaviour
     }
 
     void FixedUpdate() {
-        // update movement of obstacle to go with camera movement
         rb.velocity = new Vector2(rb.velocity.x - gameSettings.speedIncrement, 0);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision){
-        if(collision.tag == "LeftBorder"){
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.tag == "LeftBorder") {
             Destroy(this.gameObject);
-        }else if (collision.tag == "Player" && (!player.GetComponent<Player>().unstoppable)){
-            Destroy(player.gameObject);
-            // POR AGORA ESTÁ A SAIR DO JOGO QUANDO PERDE!
-           UnityEditor.EditorApplication.isPlaying = false;
+        }
+        else if (collision.tag == "Player") {
+            Destroy(this.gameObject);
+            scoreCanvas.score += (int)pointsPerCollectible;
+            scoreCanvas.scoreText.text = (int)scoreCanvas.score + "";
         }
     }
 }

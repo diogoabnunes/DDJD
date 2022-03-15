@@ -7,6 +7,14 @@ TagManager:
   - Border
   - LeftBorder
   - RightBorder
+  - TopBorder
+  - BottomBorder
+  - TigerShot
+  - BottomOutScene
+  - Collectible
+  - Obstacle
+  - Score
+  - Enemy
   layers:
   - Default
   - TransparentFX
