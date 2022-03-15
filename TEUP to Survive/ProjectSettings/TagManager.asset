@@ -11,6 +11,7 @@ TagManager:
   - BottomBorder
   - TigerShot
   - Enemie
+  - BottomOutScene
   layers:
   - Default
   - TransparentFX
