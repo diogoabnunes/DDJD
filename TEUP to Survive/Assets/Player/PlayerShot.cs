@@ -27,9 +27,9 @@ public class PlayerShot : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision){
         if(collision.tag == "RightBorder") Destroy(this.gameObject);
-
         else if (collision.tag == "Enemy") {
             Destroy(this.gameObject);
+            
             scoreCanvas.score += (int)pointsPerEnemy;
             scoreCanvas.scoreText.text = (int)scoreCanvas.score + "";
         }
