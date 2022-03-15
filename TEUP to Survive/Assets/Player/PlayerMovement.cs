@@ -54,4 +54,10 @@ public class PlayerMovement : MonoBehaviour
     private void Shot() {
         Instantiate(tigerShot, transform.position, transform.rotation);
     }
+
+    public void TakeShot() {
+        Destroy(this.gameObject);
+        // POR AGORA ESTÁ A SAIR DO JOGO QUANDO PERDE!
+        UnityEditor.EditorApplication.isPlaying = false;
+    }
 }

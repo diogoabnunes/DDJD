@@ -7,6 +7,11 @@ TagManager:
   - Border
   - LeftBorder
   - RightBorder
+  - TopBorder
+  - BottomBorder
+  - TigerShot
+  - Enemie
+  - BottomOutScene
   layers:
   - Default
   - TransparentFX
