@@ -12,6 +12,9 @@ TagManager:
   - TigerShot
   - Enemie
   - BottomOutScene
+  - Collectible
+  - Obstacle
+  - Score
   layers:
   - Default
   - TransparentFX
