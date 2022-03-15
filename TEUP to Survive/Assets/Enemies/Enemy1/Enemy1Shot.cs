@@ -10,7 +10,6 @@ public class Enemy1Shot : MonoBehaviour
 
     private float shotSpeed;
 
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();

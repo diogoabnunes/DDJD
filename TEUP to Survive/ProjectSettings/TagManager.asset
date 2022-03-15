@@ -9,6 +9,7 @@ TagManager:
   - RightBorder
   - TopBorder
   - BottomBorder
+  - TigerShot
   layers:
   - Default
   - TransparentFX

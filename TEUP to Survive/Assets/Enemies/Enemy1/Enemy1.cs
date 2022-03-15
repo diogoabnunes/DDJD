@@ -27,7 +27,6 @@ public class Enemy1 : MonoBehaviour
         direction = UP;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (CanShot()) {
