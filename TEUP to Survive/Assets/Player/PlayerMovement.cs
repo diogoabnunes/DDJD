@@ -4,35 +4,19 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed;
-    public Rigidbody2D rb;
-    public bool unstoppable;// power-up effect (coffee??)
-    [SerializeField] private GameObject tigerShot;
+    [SerializeField] private float speed;
+    [SerializeField] private Rigidbody2D rb;
 
-    private bool jump = false;
-    private float lastShot;
-    private float coolDownShot;
+    private bool jump;
 
-    // Start is called before the first frame update
     void Start()
     {
-       unstoppable = false; 
-       lastShot = -1f;
-       coolDownShot = 0.5f;
+        jump = false; 
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space))
-        {
-            jump = true;
-        }
-
-        if (Input.GetKey(KeyCode.Return) && CanShot())
-        {
-            Shot();
-        }
+        if (Input.GetKey(KeyCode.Space)) jump = true;
     }
 
     void FixedUpdate() {
@@ -40,24 +24,5 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(Vector2.up * 7.5f * speed);
             jump = false;
         }
-    }
-
-    private bool CanShot() {
-        if (lastShot == -1 || (Time.time - lastShot) > coolDownShot) {
-            lastShot = Time.time;
-            return true;
-        }
-
-        return false;
-    }
-
-    private void Shot() {
-        Instantiate(tigerShot, transform.position, transform.rotation);
-    }
-
-    public void TakeShot() {
-        Destroy(this.gameObject);
-        // POR AGORA ESTÁ A SAIR DO JOGO QUANDO PERDE!
-        UnityEditor.EditorApplication.isPlaying = false;
     }
 }

@@ -28,6 +28,6 @@ public class Enemy1Shot : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision){
         if(collision.tag == "LeftBorder") Destroy(this.gameObject);
-        else if (collision.tag == "Player") collision.GetComponent<PlayerMovement>().TakeShot();
+        else if (collision.tag == "Player") collision.GetComponent<Player>().TakeShot();
     }
 }

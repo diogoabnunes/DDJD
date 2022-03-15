@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TigerShot : MonoBehaviour
+public class PlayerShot : MonoBehaviour
 {
     private Rigidbody2D rb;
     private GameSettings gameSettings;
