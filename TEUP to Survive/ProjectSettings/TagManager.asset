@@ -10,11 +10,11 @@ TagManager:
   - TopBorder
   - BottomBorder
   - TigerShot
-  - Enemie
   - BottomOutScene
   - Collectible
   - Obstacle
   - Score
+  - Enemy
   layers:
   - Default
   - TransparentFX
