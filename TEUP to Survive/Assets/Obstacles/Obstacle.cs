@@ -22,10 +22,7 @@ public class Obstacle : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    void Update(){}
 
     void FixedUpdate() {
         // update movement of obstacle to go with camera movement
@@ -35,10 +32,10 @@ public class Obstacle : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision){
         if(collision.tag == "LeftBorder"){
             Destroy(this.gameObject);
-        }else if (collision.tag == "Player" && (!player.GetComponent<Player>().unstoppable)){
+        }else if (collision.tag == "Player" && (!player.GetComponent<PlayerPowerUps>().IsUnstoppable())){
             Destroy(player.gameObject);
             // POR AGORA ESTÁ A SAIR DO JOGO QUANDO PERDE!
-           UnityEditor.EditorApplication.isPlaying = false;
+            UnityEditor.EditorApplication.isPlaying = false;
         }
     }
 }

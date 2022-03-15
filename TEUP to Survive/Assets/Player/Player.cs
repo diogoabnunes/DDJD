@@ -4,12 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public bool unstoppable;// power-up effect (coffee??)
-    
-    void Start()
-    {
-        unstoppable = false;
-    }
+    void Start(){}
 
     public void TakeShot() {
         Destroy(this.gameObject);

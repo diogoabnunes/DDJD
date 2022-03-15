@@ -31,7 +31,7 @@ public class UnstoppablePowerUp : MonoBehaviour
         if(collision.tag == "LeftBorder"){
             Destroy(this.gameObject);
         }else if (collision.tag == "Player"){
-            // player.GetComponent<PlayerMovement>().enableUnstoppable(duration);
+            player.GetComponent<PlayerPowerUps>().ActivateUnstoppable(duration);
             Destroy(this.gameObject);
         }
     }
