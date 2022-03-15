@@ -31,7 +31,7 @@ public class ContinuousFire : MonoBehaviour
         if(collision.tag == "LeftBorder"){
             Destroy(this.gameObject);
         }else if (collision.tag == "Player"){
-            // player.GetComponent<PlayerMovement>().enableContinuousFire(duration);
+            player.GetComponent<PlayerPowerUps>().ActivateContinuousFire(duration);
             Destroy(this.gameObject);
         }
     }
