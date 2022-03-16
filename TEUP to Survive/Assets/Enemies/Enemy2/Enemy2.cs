@@ -13,12 +13,16 @@ public class Enemy2 : MonoBehaviour
     private bool isShooting;
     private float timeToDie;
 
+    public Spawn spawn;
+
     void Start()
     {
         nextShot = Time.time + 3f;
         stopShooting = 10f;
         isShooting = false;
-        timeToDie = -1f;        
+        timeToDie = -1f;
+
+        spawn = FindObjectsOfType<Spawn>()[0];        
     }
 
     void Update()
@@ -52,6 +56,9 @@ public class Enemy2 : MonoBehaviour
 
         // go down the screen
         GetComponent<Rigidbody2D>().gravityScale = 3;
+
+        // tell spawn that there is one less enemie
+        spawn.EnemieDied();
     }
 
     void OnTriggerEnter2D(Collider2D collision){
