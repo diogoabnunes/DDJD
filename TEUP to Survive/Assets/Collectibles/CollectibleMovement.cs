@@ -16,4 +16,5 @@ public class CollectibleMovement : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, collectible.player.transform.position, collectible.moveSpeed * Time.deltaTime);
     }
+    
 }

@@ -93,6 +93,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 636e4474d830c5c44ae47dee4aba46c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  continuousFireCollider: {fileID: 0}
+  rb: {fileID: 0}
+  duration: 3
 --- !u!1 &3314081289395599612
 GameObject:
   m_ObjectHideFlags: 0
