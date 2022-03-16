@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Obstacle : MonoBehaviour
-{   
+public class Obstacle2 : MonoBehaviour
+{
     [SerializeField] private BoxCollider2D obstacleCollider;
     [SerializeField] private Rigidbody2D rb;
 
@@ -22,7 +22,10 @@ public class Obstacle : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update(){}
+    void Update()
+    {
+        
+    }
 
     void FixedUpdate() {
         // update movement of obstacle to go with camera movement

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnObstacle : MonoBehaviour
+public class SpawnObstacle1 : MonoBehaviour
 {
     [SerializeField] private GameObject obstacle;
     [SerializeField] private float minY;
