@@ -4,16 +4,13 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {   
-    [SerializeField] private BoxCollider2D obstacleCollider;
     [SerializeField] private Rigidbody2D rb;
-
     private GameSettings gameSettings;
     private GameObject player;
 
     // Start is called before the first frame update
     void Start()
     {
-        obstacleCollider = GetComponent<BoxCollider2D>();
         rb = GetComponent<Rigidbody2D>();
         gameSettings = FindObjectsOfType<GameSettings>()[0];
         player = GameObject.FindGameObjectWithTag("Player");

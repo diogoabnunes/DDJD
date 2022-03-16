@@ -6,7 +6,6 @@ public class PlayerShot : MonoBehaviour
 {
     private Rigidbody2D rb;
     private GameSettings gameSettings;
-
     private ScoreManager scoreCanvas;
     private float pointsPerEnemy = 50f;
 

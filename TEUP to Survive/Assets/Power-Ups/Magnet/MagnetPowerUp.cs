@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MagnetPowerUp : MonoBehaviour
 {
-    [SerializeField] private BoxCollider2D magnetCollider;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float duration;
     private GameSettings gameSettings;
@@ -12,7 +11,6 @@ public class MagnetPowerUp : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        magnetCollider = GetComponent<BoxCollider2D>();
         rb = GetComponent<Rigidbody2D>();
         gameSettings = FindObjectsOfType<GameSettings>()[0];
         player = GameObject.FindGameObjectWithTag("Player");

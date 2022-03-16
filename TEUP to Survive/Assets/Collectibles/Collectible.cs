@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class Collectible : MonoBehaviour
 {
-    [SerializeField] private BoxCollider2D collectibleCollider;
     [SerializeField] private Rigidbody2D rb;
     private GameSettings gameSettings;
-    private GameObject player;
     private ScoreManager scoreCanvas;
     private float pointsPerCollectible = 10f;
     private CollectibleMovement collectibleMovement;
@@ -15,10 +13,8 @@ public class Collectible : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        collectibleCollider = GetComponent<BoxCollider2D>();
         rb = GetComponent<Rigidbody2D>();
         gameSettings = FindObjectsOfType<GameSettings>()[0];
-        player = GameObject.FindGameObjectWithTag("Player");
         scoreCanvas = FindObjectsOfType<ScoreManager>()[0];
         collectibleMovement = gameObject.GetComponent<CollectibleMovement>();
 
@@ -26,10 +22,7 @@ public class Collectible : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    void Update(){}
 
     void FixedUpdate() {
         rb.velocity = new Vector2(rb.velocity.x - gameSettings.speedIncrement, 0);
