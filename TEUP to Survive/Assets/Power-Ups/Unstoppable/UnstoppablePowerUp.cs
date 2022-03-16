@@ -2,18 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Obstacle : MonoBehaviour
-{   
-    [SerializeField] private BoxCollider2D obstacleCollider;
+public class UnstoppablePowerUp : MonoBehaviour
+{
+    [SerializeField] private BoxCollider2D unstoppableCollider;
     [SerializeField] private Rigidbody2D rb;
-
+    [SerializeField] private float duration;
     private GameSettings gameSettings;
     private GameObject player;
-
     // Start is called before the first frame update
     void Start()
     {
-        obstacleCollider = GetComponent<BoxCollider2D>();
+        unstoppableCollider = GetComponent<BoxCollider2D>();
         rb = GetComponent<Rigidbody2D>();
         gameSettings = FindObjectsOfType<GameSettings>()[0];
         player = GameObject.FindGameObjectWithTag("Player");
@@ -22,20 +21,18 @@ public class Obstacle : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update(){}
+    void Update() {}
 
     void FixedUpdate() {
-        // update movement of obstacle to go with camera movement
         rb.velocity = new Vector2(rb.velocity.x - gameSettings.speedIncrement, 0);
     }
 
     private void OnTriggerEnter2D(Collider2D collision){
         if(collision.tag == "LeftBorder"){
             Destroy(this.gameObject);
-        }else if (collision.tag == "Player" && (!player.GetComponent<PlayerPowerUps>().IsUnstoppable())){
-            Destroy(player.gameObject);
-            // POR AGORA ESTÁ A SAIR DO JOGO QUANDO PERDE!
-            UnityEditor.EditorApplication.isPlaying = false;
+        }else if (collision.tag == "Player"){
+            player.GetComponent<PlayerPowerUps>().ActivateUnstoppable(duration);
+            Destroy(this.gameObject);
         }
     }
 }
