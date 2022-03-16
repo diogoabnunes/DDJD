@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class CollectibleMovement : MonoBehaviour
 {
-    private Collectible collectible;
+    private GameObject player;
+    private float moveSpeed = 17f;
     // Start is called before the first frame update
     void Start()
     {
-        collectible = gameObject.GetComponent<Collectible>();
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, collectible.player.transform.position, collectible.moveSpeed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, moveSpeed * Time.deltaTime);
     }
     
 }

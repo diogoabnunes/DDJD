@@ -7,8 +7,7 @@ public class Collectible : MonoBehaviour
     [SerializeField] private BoxCollider2D collectibleCollider;
     [SerializeField] private Rigidbody2D rb;
     private GameSettings gameSettings;
-    public GameObject player;
-    public float moveSpeed = 17f;
+    private GameObject player;
     private ScoreManager scoreCanvas;
     private float pointsPerCollectible = 10f;
     private CollectibleMovement collectibleMovement;
