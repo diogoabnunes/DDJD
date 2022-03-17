@@ -495,7 +495,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstacle: {fileID: 2993666943117970452, guid: 1b0656fcde4487e478c77f40fb0a2f38, type: 3}
-  Y: -2
+  Y: -2.5
   timeBetweenObstacles: 4
   spawnTime: 1
 --- !u!4 &443362812

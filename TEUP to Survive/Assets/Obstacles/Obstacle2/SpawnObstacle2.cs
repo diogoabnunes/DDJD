@@ -19,6 +19,9 @@ public class SpawnObstacle2 : MonoBehaviour
     }
 
     void Spawn() {
-        Instantiate(obstacle, transform.position + new Vector3(0, Y, 0), transform.rotation);
+        float scale = Random.Range(1.0f, 4.0f);
+        GameObject i = Instantiate(obstacle, transform.position + new Vector3(0, Y + scale/2, 0), transform.rotation);
+        Transform t = i.transform.GetChild(0);
+        t.localScale = new Vector3(1, scale, 1);
     }
 }
