@@ -12,6 +12,7 @@ public class Enemy2 : MonoBehaviour
     private float stopShooting;
     private bool isShooting;
     private float timeToDie;
+    private bool died;
 
     public Spawn spawn;
 
@@ -21,6 +22,7 @@ public class Enemy2 : MonoBehaviour
         stopShooting = 10f;
         isShooting = false;
         timeToDie = -1f;
+        died = false;
 
         spawn = FindObjectsOfType<Spawn>()[0];        
     }
@@ -46,10 +48,12 @@ public class Enemy2 : MonoBehaviour
 
         if (numRounfOfShots == 0 && timeToDie == -1) timeToDie = Time.time + 2f;
 
-        if (timeToDie != -1 && Time.time > timeToDie) Die();
+        if (timeToDie != -1 && Time.time > timeToDie && !died) Die();
     }
 
     void Die() {
+        died = true;
+
         // disable components
         GetComponent<Enemy2Fire>().enabled = false;
         GetComponent<Enemy2Movement>().enabled = false;
