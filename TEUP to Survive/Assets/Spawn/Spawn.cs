@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+    * Apos gerar X obstaculos gera um inimigo aleatorio.
+*/
+
 [System.Serializable] public class SpawnableObjects {
     public GameObject spawnableObject;
     public float generationRate;
@@ -11,19 +15,23 @@ using UnityEngine;
 
 public class Spawn : MonoBehaviour
 {
+    // Objects to spawn
     [SerializeField] private SpawnableObjects[] obstacles;
     [SerializeField] private SpawnableObjects[] collectibles;
     [SerializeField] private SpawnableObjects[] powerUps;
     [SerializeField] private SpawnableObjects[] enemies;
 
-    [SerializeField] private int numConsecutiveObstacles;
+    // Logic of spawning
+    [SerializeField] private int numObstaclesBetweenEnemies;
+    [SerializeField] private int numCollectiblesBetweenPowerUps;
 
-    private int numObstaclesSpawn;
     private bool spawnObstacle;
+    private bool spawnCollectible;
+    
+    private int currObstaclesBetweenEnemies;
+    private int currCollectiblesBetweenPowerUps;
 
     private int numEnemiesLive;
-
-    // private int OBSTACLE = 0, COLLECTIBLE = 1, POWER_UPS = 2, ENEMIE = 3;
 
     private float nextSpawn;
     
@@ -31,39 +39,79 @@ public class Spawn : MonoBehaviour
     {
         nextSpawn = 0f;
 
-        numObstaclesSpawn = 0;
+        currObstaclesBetweenEnemies = 0;
+        currCollectiblesBetweenPowerUps = 0;
+
         spawnObstacle = true;
+        spawnCollectible = true;
 
         numEnemiesLive = 0;
-
-        // numCollectiblesSpawn = 0;
-        // numPowerUpsSpawn = 0;
-        // numEnemiesSpawn = 0;
     }
 
     void Update()
     {
-        if (Time.time > nextSpawn && numEnemiesLive == 0) {
-            if (spawnObstacle) SpawnObstacle();
-            else SpawnEnemie();
+        if (CanSpawn()) {
+            int spawnable = Random.Range(0, 2);
+            
+            if (spawnable == 0) { // spawn an obstacle or an enemy
+                if (spawnObstacle) SpawnObstacle();
+                else SpawnEnemie();
+            }
+            else { // spawn a collectible or powerup
+                if (spawnCollectible) SpawnCollectible();
+                else SpawnPowerUp();
+            }
         }
     }
 
-    void SpawnObstacle() {
-        float y = Random.Range(obstacles[0].minY, obstacles[0].maxY);
-        Instantiate(obstacles[0].spawnableObject, transform.position + new Vector3(0, y, 0), transform.rotation);
+    /**
+        There can't be any enemie on scene, and spawnTime mus be reached.
+    */
+    bool CanSpawn() {
+        return Time.time > nextSpawn && numEnemiesLive == 0;
+    }
 
-        numObstaclesSpawn++;
-        if (numObstaclesSpawn % numConsecutiveObstacles == 0) spawnObstacle = false;
+    void SpawnObject(GameObject spawnableObject, float minY, float maxY) {
+        float y = Random.Range(minY, maxY);
+        Instantiate(spawnableObject, transform.position + new Vector3(0, y, 0), transform.rotation);
+    }
+
+    void SpawnCollectible() {
+        SpawnObject(collectibles[0].spawnableObject, collectibles[0].minY, collectibles[0].maxY);
+
+        currCollectiblesBetweenPowerUps++;
+        if (currCollectiblesBetweenPowerUps % numCollectiblesBetweenPowerUps == 0) {
+            spawnCollectible = false;
+            currCollectiblesBetweenPowerUps = 0; // reset counting
+        }
+
+        nextSpawn = Time.time + collectibles[0].generationRate;
+    }
+
+    void SpawnPowerUp() {
+        int powerUpSelected = Random.Range(0, powerUps.Length);
+        SpawnObject(powerUps[powerUpSelected].spawnableObject, powerUps[powerUpSelected].minY, powerUps[powerUpSelected].maxY);
+        
+        spawnCollectible = true;
+
+        nextSpawn = Time.time + powerUps[powerUpSelected].generationRate;
+    }
+
+    void SpawnObstacle() {
+        SpawnObject(obstacles[0].spawnableObject, obstacles[0].minY, obstacles[0].maxY);
+
+        currObstaclesBetweenEnemies++;
+        if (currObstaclesBetweenEnemies % numObstaclesBetweenEnemies == 0) {
+            spawnObstacle = false;
+            currObstaclesBetweenEnemies = 0; // reset counting
+        }
 
         nextSpawn = Time.time + obstacles[0].generationRate;
     }
 
     void SpawnEnemie() {
         int enemySelected = Random.Range(0, enemies.Length);
-
-        float y = Random.Range(enemies[enemySelected].minY, enemies[enemySelected].maxY);
-        Instantiate(enemies[enemySelected].spawnableObject, transform.position + new Vector3(0, y, 0), transform.rotation);
+        SpawnObject(enemies[enemySelected].spawnableObject, enemies[enemySelected].minY, enemies[enemySelected].maxY);
 
         numEnemiesLive++;
         

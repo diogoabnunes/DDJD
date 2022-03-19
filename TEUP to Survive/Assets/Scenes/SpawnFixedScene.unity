@@ -1381,13 +1381,14 @@ MonoBehaviour:
     maxY: 4
   enemies:
   - spawnableObject: {fileID: 4877054648337649886, guid: 51a45dadcf59b1047b46f41458f4c88c, type: 3}
-    generationRate: 7
+    generationRate: 0
     minY: -1.5
     maxY: 4
   - spawnableObject: {fileID: 7939817613462860966, guid: 3e835f21e37581c4b99ec32da4f9e743, type: 3}
-    generationRate: 7
+    generationRate: 20
     minY: -0.4
     maxY: 3
+  numConsecutiveObstacles: 4
 --- !u!1 &1904041247
 GameObject:
   m_ObjectHideFlags: 0
