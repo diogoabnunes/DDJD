@@ -7,8 +7,12 @@ public class Enemy1 : MonoBehaviour
     [SerializeField] private float numShotsCanTake = 1f; // number of shots that can
     private float numShotsTaken;
 
+    public Spawn spawn;
+
     void Start() {
         numShotsTaken = 0f;
+
+        spawn = FindObjectsOfType<Spawn>()[0];
     }
 
     void OnTriggerEnter2D(Collider2D collision){
@@ -34,5 +38,8 @@ public class Enemy1 : MonoBehaviour
 
         // go down the screen
         GetComponent<Rigidbody2D>().gravityScale = 3f;
+
+        // tell spawn that there is one less enemie
+        spawn.EnemieDied();
     }
 }
