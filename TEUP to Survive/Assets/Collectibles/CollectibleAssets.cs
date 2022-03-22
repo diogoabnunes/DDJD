@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Obstacle2Asset : MonoBehaviour
+public class CollectibleAssets : MonoBehaviour
 {
-     [SerializeField] private Sprite[] assets;
+    [SerializeField] private Sprite[] assets;
 
     // Start is called before the first frame update
     void Start()

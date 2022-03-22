@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollectibleAsset : MonoBehaviour
+public class Obstacle2Assets : MonoBehaviour
 {
     [SerializeField] private Sprite[] assets;
 
