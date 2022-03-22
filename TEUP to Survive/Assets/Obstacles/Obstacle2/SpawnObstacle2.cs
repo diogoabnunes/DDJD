@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnObstacle : MonoBehaviour
+public class SpawnObstacle2 : MonoBehaviour
 {
     [SerializeField] private GameObject obstacle;
-    [SerializeField] private float minY;
-    [SerializeField] private float maxY;
+    [SerializeField] private float Y;
     [SerializeField] private float timeBetweenObstacles;
     [SerializeField] private float spawnTime;
 
@@ -19,8 +18,10 @@ public class SpawnObstacle : MonoBehaviour
         }
     }
 
-    void Spawn(){
-        float y = Random.Range(minY, maxY);
-        Instantiate(obstacle, transform.position + new Vector3(0, y, 0), transform.rotation);
+    void Spawn() {
+        float scale = Random.Range(1.0f, 4.0f);
+        GameObject i = Instantiate(obstacle, transform.position + new Vector3(0, Y + scale/2, 0), transform.rotation);
+        Transform t = i.transform.GetChild(0);
+        t.localScale = new Vector3(1, scale, 1);
     }
 }

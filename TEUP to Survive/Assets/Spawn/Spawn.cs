@@ -65,7 +65,7 @@ public class Spawn : MonoBehaviour
     }
 
     /**
-        There can't be any enemie on scene, and spawnTime mus be reached.
+        There can't be any enemy on scene, and spawnTime must be reached.
     */
     bool CanSpawn() {
         return Time.time > nextSpawn && numEnemiesLive == 0;
@@ -74,6 +74,13 @@ public class Spawn : MonoBehaviour
     void SpawnObject(GameObject spawnableObject, float minY, float maxY) {
         float y = Random.Range(minY, maxY);
         Instantiate(spawnableObject, transform.position + new Vector3(0, y, 0), transform.rotation);
+    }
+
+    void SpawnObstacle2(GameObject obstacle2, float Y) {
+        float scale = Random.Range(1.0f, 4.0f);
+        GameObject i = Instantiate(obstacle2, transform.position + new Vector3(0, Y + scale/2, 0), transform.rotation);
+        Transform t = i.transform.GetChild(0);
+        t.localScale = new Vector3(1, scale, 1);
     }
 
     void SpawnCollectible() {
@@ -98,7 +105,13 @@ public class Spawn : MonoBehaviour
     }
 
     void SpawnObstacle() {
-        SpawnObject(obstacles[0].spawnableObject, obstacles[0].minY, obstacles[0].maxY);
+        int obstacleSelected = Random.Range(0, obstacles.Length);
+        if (obstacleSelected == 0) {
+            SpawnObject(obstacles[obstacleSelected].spawnableObject, obstacles[obstacleSelected].minY, obstacles[obstacleSelected].maxY);
+        }
+        else {
+            SpawnObstacle2(obstacles[obstacleSelected].spawnableObject, obstacles[obstacleSelected].minY);
+        }
 
         currObstaclesBetweenEnemies++;
         if (currObstaclesBetweenEnemies % numObstaclesBetweenEnemies == 0) {
