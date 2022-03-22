@@ -10,7 +10,8 @@ using UnityEngine;
     public GameObject spawnableObject;
     public float generationRate;
     public float minY;
-    public float maxY;
+    public float maxY = -1;
+    public float maxScale = -1;
 }
 
 public class Spawn : MonoBehaviour
@@ -71,20 +72,25 @@ public class Spawn : MonoBehaviour
         return Time.time > nextSpawn && numEnemiesLive == 0;
     }
 
-    void SpawnObject(GameObject spawnableObject, float minY, float maxY) {
-        float y = Random.Range(minY, maxY);
-        Instantiate(spawnableObject, transform.position + new Vector3(0, y, 0), transform.rotation);
-    }
+    void SpawnObject(GameObject spawnableObject, float minY, float maxY, float maxScale) {
+        float y = minY;
+        if (maxY < minY) y = Random.Range(minY, maxY);
 
-    void SpawnObstacle2(GameObject obstacle2, float Y) {
-        float scale = Random.Range(1.0f, 4.0f);
-        GameObject i = Instantiate(obstacle2, transform.position + new Vector3(0, Y + scale/2, 0), transform.rotation);
-        Transform t = i.transform.GetChild(0);
-        t.localScale = new Vector3(1, scale, 1);
+        float scaleY = 1;
+        if (maxScale > 0) {
+            // vary height of the obstacle
+            scaleY = Random.Range(1, maxScale);
+
+            // needed so that obstacle is not flying
+            y = y + ((scaleY * 0.5f) - 0.5f);
+        }
+        
+        GameObject newObject = Instantiate(spawnableObject, transform.position + new Vector3(0, y, 0), transform.rotation);
+        if (scaleY > 1) newObject.transform.localScale = new Vector3(1, scaleY, 1);
     }
 
     void SpawnCollectible() {
-        SpawnObject(collectibles[0].spawnableObject, collectibles[0].minY, collectibles[0].maxY);
+        SpawnObject(collectibles[0].spawnableObject, collectibles[0].minY, collectibles[0].maxY, collectibles[0].maxScale);
 
         currCollectiblesBetweenPowerUps++;
         if (currCollectiblesBetweenPowerUps % numCollectiblesBetweenPowerUps == 0) {
@@ -97,7 +103,7 @@ public class Spawn : MonoBehaviour
 
     void SpawnPowerUp() {
         int powerUpSelected = Random.Range(0, powerUps.Length);
-        SpawnObject(powerUps[powerUpSelected].spawnableObject, powerUps[powerUpSelected].minY, powerUps[powerUpSelected].maxY);
+        SpawnObject(powerUps[powerUpSelected].spawnableObject, powerUps[powerUpSelected].minY, powerUps[powerUpSelected].maxY, powerUps[powerUpSelected].maxScale);
         
         spawnCollectible = true;
 
@@ -106,12 +112,7 @@ public class Spawn : MonoBehaviour
 
     void SpawnObstacle() {
         int obstacleSelected = Random.Range(0, obstacles.Length);
-        if (obstacleSelected == 0) {
-            SpawnObject(obstacles[obstacleSelected].spawnableObject, obstacles[obstacleSelected].minY, obstacles[obstacleSelected].maxY);
-        }
-        else {
-            SpawnObstacle2(obstacles[obstacleSelected].spawnableObject, obstacles[obstacleSelected].minY);
-        }
+        SpawnObject(obstacles[obstacleSelected].spawnableObject, obstacles[obstacleSelected].minY, obstacles[obstacleSelected].maxY, obstacles[obstacleSelected].maxScale);
 
         currObstaclesBetweenEnemies++;
         if (currObstaclesBetweenEnemies % numObstaclesBetweenEnemies == 0) {
@@ -124,7 +125,7 @@ public class Spawn : MonoBehaviour
 
     void SpawnEnemie() {
         int enemySelected = Random.Range(0, enemies.Length);
-        SpawnObject(enemies[enemySelected].spawnableObject, enemies[enemySelected].minY, enemies[enemySelected].maxY);
+        SpawnObject(enemies[enemySelected].spawnableObject, enemies[enemySelected].minY, enemies[enemySelected].maxY, enemies[enemySelected].maxScale);
 
         numEnemiesLive++;
         
