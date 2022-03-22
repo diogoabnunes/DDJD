@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1967819150253901269}
   - component: {fileID: 3919572664046501097}
   - component: {fileID: 7168410926153638747}
+  - component: {fileID: 1215844407050859651}
   m_Layer: 0
   m_Name: Enemy2Shot_2
   m_TagString: Untagged
@@ -93,7 +94,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b446433f3d07700438e5a5b86cb9a943, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotSpeed: -5
+--- !u!114 &1215844407050859651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2213421915710833377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11688d17f3f74d448b2f121ee799769f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 4
+  directionLeft: 1
 --- !u!1 &6068209783894920475
 GameObject:
   m_ObjectHideFlags: 0

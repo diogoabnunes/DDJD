@@ -1219,7 +1219,7 @@ MonoBehaviour:
   - spawnableObject: {fileID: 5070938181936594641, guid: 1b0656fcde4487e478c77f40fb0a2f38, type: 3}
     generationRate: 3
     minY: -2
-    maxY: -1
+    maxY: -50
     maxScale: 4
   collectibles:
   - spawnableObject: {fileID: 6972485158811120042, guid: 1aff9bf60196ad44b81e963f8e4ac798, type: 3}

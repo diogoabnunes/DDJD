@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 128208599220926856}
   - component: {fileID: -5394036328849568692}
   - component: {fileID: 5980622188021314631}
+  - component: {fileID: 8577004019638109153}
   m_Layer: 0
   m_Name: TigerShot
   m_TagString: TigerShot
@@ -67,6 +68,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57838cf281c06b94a8a19f074c10a0fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shotSpeed: 4
 --- !u!58 &5980622188021314631
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -83,6 +85,18 @@ CircleCollider2D:
   m_Offset: {x: 0.00042185187, y: 0}
   serializedVersion: 2
   m_Radius: 0.14931884
+--- !u!114 &8577004019638109153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128208599220926857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11688d17f3f74d448b2f121ee799769f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &128208599546105486
 GameObject:
   m_ObjectHideFlags: 0
