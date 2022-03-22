@@ -10,7 +10,7 @@ using UnityEngine;
     public GameObject spawnableObject;
     public float generationRate;
     public float minY;
-    public float maxY = -1;
+    public float maxY = -50;
     public float maxScale = -1;
 }
 
@@ -74,7 +74,7 @@ public class Spawn : MonoBehaviour
 
     void SpawnObject(GameObject spawnableObject, float minY, float maxY, float maxScale) {
         float y = minY;
-        if (maxY < minY) y = Random.Range(minY, maxY);
+        if (maxY > minY) y = Random.Range(minY, maxY);
 
         float scaleY = 1;
         if (maxScale > 0) {
