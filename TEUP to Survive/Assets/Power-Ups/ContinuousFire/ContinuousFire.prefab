@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1290220104734006464}
   - component: {fileID: 1697437872907832920}
   - component: {fileID: 3927371353200172472}
+  - component: {fileID: 8018528583710393948}
   m_Layer: 0
   m_Name: ContinuousFire
   m_TagString: Untagged
@@ -93,9 +94,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 636e4474d830c5c44ae47dee4aba46c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  continuousFireCollider: {fileID: 0}
   rb: {fileID: 0}
   duration: 3
+--- !u!114 &8018528583710393948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1966270341443122201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a8d71ed1af34284ea7a85d5ef47b5de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3314081289395599612
 GameObject:
   m_ObjectHideFlags: 0

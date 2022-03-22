@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 2066530160736866702}
   - component: {fileID: 2777751213488085322}
   - component: {fileID: -7850897305796582528}
+  - component: {fileID: 6602206275433178510}
   m_Layer: 0
   m_Name: Collectible
   m_TagString: Collectible
@@ -176,10 +177,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0980fa3fcb90564dae4a55e9d7c7157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectibleCollider: {fileID: 0}
-  rb: {fileID: 0}
-  player: {fileID: 0}
-  moveSpeed: 17
 --- !u!114 &-7850897305796582528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,5 +187,17 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a3a8fc8f95192e41b817ab14eec16b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6602206275433178510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6972485158811120042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a8d71ed1af34284ea7a85d5ef47b5de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

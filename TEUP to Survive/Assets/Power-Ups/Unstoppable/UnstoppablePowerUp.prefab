@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8604657429981809661}
   - component: {fileID: 8378324768526984759}
   - component: {fileID: -7705004101590457767}
+  - component: {fileID: 4329302431734787643}
   m_Layer: 0
   m_Name: UnstoppablePowerUp
   m_TagString: Untagged
@@ -93,9 +94,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41f50036f4ba0b348ae67fd1da5a4ea8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unstoppableCollider: {fileID: 0}
   rb: {fileID: 0}
   duration: 5
+--- !u!114 &4329302431734787643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 236406917796115284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a8d71ed1af34284ea7a85d5ef47b5de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2354067759281783276
 GameObject:
   m_ObjectHideFlags: 0
