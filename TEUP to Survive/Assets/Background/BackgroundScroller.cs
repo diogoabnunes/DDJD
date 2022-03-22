@@ -10,7 +10,6 @@ public class BackgroundScroller : MonoBehaviour
     private float width;
     private GameSettings gameSettings;
 
-    // Start is called before the first frame update
     void Start()
     {
         backgroundCollider = GetComponent<BoxCollider2D>();
@@ -20,7 +19,7 @@ public class BackgroundScroller : MonoBehaviour
         width = backgroundCollider.size.x * transform.localScale.x;
         backgroundCollider.enabled = false;
 
-        rb.velocity = new Vector2(gameSettings.scrollSpeed,0);
+        rb.velocity = new Vector2(gameSettings.scrollSpeed, 0);
     }
 
     void FixedUpdate()
@@ -30,6 +29,6 @@ public class BackgroundScroller : MonoBehaviour
             transform.position = (Vector2)transform.position + resetPosition;
         }
        
-        rb.velocity = new Vector2(rb.velocity.x - gameSettings.speedIncrement,0);
+        rb.velocity = new Vector2(gameSettings.scrollSpeed, 0);
     }
 }

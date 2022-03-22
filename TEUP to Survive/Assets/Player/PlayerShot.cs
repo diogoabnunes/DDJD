@@ -9,6 +9,8 @@ public class PlayerShot : MonoBehaviour
     private ScoreManager scoreCanvas;
     private float pointsPerEnemy = 50f;
 
+    [SerializeField] private float shotSpeed = 4f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,16 +18,16 @@ public class PlayerShot : MonoBehaviour
         gameSettings = FindObjectsOfType<GameSettings>()[0];
         scoreCanvas = FindObjectsOfType<ScoreManager>()[0];
 
-        rb.velocity = new Vector2(-gameSettings.scrollSpeed, 0);
+        rb.velocity = new Vector2(-gameSettings.scrollSpeed + shotSpeed, 0);
     }
 
     void FixedUpdate() {
         // update movement of shot to go with camera movement
-        rb.velocity = new Vector2(rb.velocity.x + gameSettings.speedIncrement, 0);
+        rb.velocity = new Vector2(-gameSettings.scrollSpeed + shotSpeed, 0);
     }
 
     private void OnTriggerEnter2D(Collider2D collision){
-        if(collision.tag == "RightBorder") Destroy(this.gameObject);
+        if(collision.tag == "RightBorder" || collision.tag == "Obstacle") Destroy(this.gameObject);
         else if (collision.tag == "Enemy") {
             Destroy(this.gameObject);
             

@@ -213,7 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cd4d2efc99197a49879f87b802fd5c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shot: {fileID: 4516373823799281194, guid: a3dae23a3ff3b194797045ad1419dd18, type: 3}
+  shot: {fileID: 2213421915710833377, guid: 453f5632f27c9e6469f080b999304311, type: 3}
   coolDown: 0.3
 --- !u!114 &2047974524875731136
 MonoBehaviour:
@@ -293,3 +293,4 @@ MonoBehaviour:
   numRounfOfShots: 3
   durationOfShooting: 3
   timeBetweeenShooting: 3
+  spawn: {fileID: 0}

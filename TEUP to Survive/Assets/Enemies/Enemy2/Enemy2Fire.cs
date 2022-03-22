@@ -29,7 +29,8 @@ public class Enemy2Fire : MonoBehaviour
     }
 
     void Shot() {
-        Instantiate(shot, transform.position, transform.rotation);
+        Instantiate(shot, transform.position + new Vector3(0, 1.3f, 0), transform.rotation); // top shot
+        Instantiate(shot, transform.position - new Vector3(0, 1.3f, 0), transform.rotation); // bottom shot
     }
 
     public void SetFire(bool aux) {

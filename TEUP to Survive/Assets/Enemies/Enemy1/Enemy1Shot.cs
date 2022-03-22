@@ -7,7 +7,7 @@ public class Enemy1Shot : MonoBehaviour
     private Rigidbody2D rb;
     private GameSettings gameSettings;
 
-    [SerializeField] private float shotSpeed = -2.5f;
+    [SerializeField] private float shotSpeed = -4f;
 
     void Start()
     {
@@ -27,7 +27,7 @@ public class Enemy1Shot : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision){
-        if(collision.tag == "LeftBorder") Destroy(this.gameObject);
+        if(collision.tag == "LeftBorder" ||  collision.tag == "Obstacle") Destroy(this.gameObject);
         else if (collision.tag == "Player") collision.GetComponent<Player>().TakeShot();
     }
 }
