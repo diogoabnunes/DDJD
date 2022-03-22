@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5840548518186988883}
   - component: {fileID: 8352304573027934361}
   - component: {fileID: 7085393208617929776}
-  - component: {fileID: 2257002564918301575}
+  - component: {fileID: 4273895345821418579}
   m_Layer: 0
   m_Name: Obstacle1Asset
   m_TagString: Untagged
@@ -102,7 +102,7 @@ MonoBehaviour:
   - sprite: {fileID: 21300000, guid: 70971ae3dbb4c18449e1e298589255ac, type: 3}
     animationName: bird10
   anim: {fileID: 0}
---- !u!95 &2257002564918301575
+--- !u!95 &4273895345821418579
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
