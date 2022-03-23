@@ -8,15 +8,23 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
 
     private bool jump;
+    private PlayerMovementSound playerMovementSound;
 
     void Start()
     {
-        jump = false; 
+        jump = false;
+        playerMovementSound = FindObjectsOfType<PlayerMovementSound>()[0];
     }
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space)) jump = true;
+        if (Input.GetKey(KeyCode.Space)) {
+            playerMovementSound.On();
+            jump = true;
+        }
+        else {
+            playerMovementSound.Off();
+        }
     }
 
     void FixedUpdate() {

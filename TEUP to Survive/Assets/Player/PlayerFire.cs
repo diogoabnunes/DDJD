@@ -7,10 +7,12 @@ public class PlayerFire : MonoBehaviour
     [SerializeField] private GameObject tigerShot;
     [SerializeField] private float coolDown = 0.5f;
     private float nextShot;
+    private PlayerFireSound playerFireSound;
 
     void Start()
     {
         nextShot = 0f;
+        playerFireSound = FindObjectsOfType<PlayerFireSound>()[0];
     }
 
     void Update()
@@ -27,6 +29,7 @@ public class PlayerFire : MonoBehaviour
 
     private void Shot() {
         Instantiate(tigerShot, transform.position, transform.rotation);
+        playerFireSound.PlayPlayerFire();
     }
 
     public void SetShotCoolDown(float newCoolDown){
