@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Obstacle2 : MonoBehaviour
+public class Bird : MonoBehaviour
 {
     private GameObject player;
 

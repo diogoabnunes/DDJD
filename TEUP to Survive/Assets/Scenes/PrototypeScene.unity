@@ -410,7 +410,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 469764285}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -14.5, y: 0, z: 0}
+  m_LocalPosition: {x: -17, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 910628587}
@@ -1213,14 +1213,24 @@ MonoBehaviour:
   obstacles:
   - spawnableObject: {fileID: 6062321105985182828, guid: 8e6cf701572bfb2419927219fd384ce0, type: 3}
     generationRate: 3
-    minY: -1.5
+    minY: -2
+    maxY: 4
+    maxScale: -1
+  - spawnableObject: {fileID: 6062321105985182828, guid: 5b047763774aac64eb99853e12aca60f, type: 3}
+    generationRate: 3
+    minY: -2
     maxY: 4
     maxScale: -1
   - spawnableObject: {fileID: 5070938181936594641, guid: 1b0656fcde4487e478c77f40fb0a2f38, type: 3}
     generationRate: 3
-    minY: -2
+    minY: -3
     maxY: -50
     maxScale: 4
+  - spawnableObject: {fileID: 5070938181936594641, guid: 3c9bc0912b16dc84f97503c57efa1389, type: 3}
+    generationRate: 3
+    minY: -3.2
+    maxY: -50
+    maxScale: 2
   collectibles:
   - spawnableObject: {fileID: 6972485158811120042, guid: 1aff9bf60196ad44b81e963f8e4ac798, type: 3}
     generationRate: 2

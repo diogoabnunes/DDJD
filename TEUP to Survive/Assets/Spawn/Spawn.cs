@@ -76,17 +76,17 @@ public class Spawn : MonoBehaviour
         float y = minY;
         if (maxY > minY) y = Random.Range(minY, maxY);
 
-        float scaleY = 1;
+        float scale = 1;
         if (maxScale > 0) {
             // vary height of the obstacle
-            scaleY = Random.Range(1, maxScale);
+            scale = Random.Range(1, maxScale);
 
             // needed so that obstacle is not flying
-            y = y + ((scaleY * 0.5f) - 0.5f);
+            y = y + ((scale * 0.5f) - 0.5f);
         }
         
         GameObject newObject = Instantiate(spawnableObject, transform.position + new Vector3(0, y, 0), transform.rotation);
-        if (scaleY > 1) newObject.transform.localScale = new Vector3(1, scaleY, 1);
+        if (scale > 1) newObject.transform.localScale = new Vector3(scale, scale, 1);
     }
 
     void SpawnCollectible() {

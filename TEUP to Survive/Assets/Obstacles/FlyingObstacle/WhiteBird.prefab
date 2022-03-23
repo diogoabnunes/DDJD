@@ -10,10 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5840548518186988883}
   - component: {fileID: 8352304573027934361}
-  - component: {fileID: 7085393208617929776}
   - component: {fileID: 4273895345821418579}
   m_Layer: 0
-  m_Name: Obstacle1Asset
+  m_Name: WhiteBirdSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fe27e80ef4ec7f24fa0f16d08d121751, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 70971ae3dbb4c18449e1e298589255ac, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -84,24 +83,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7085393208617929776
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1289357969652595857}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 400e5f1cce4e68b4ca24ca4cc9731a52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  assets:
-  - sprite: {fileID: 21300000, guid: fe27e80ef4ec7f24fa0f16d08d121751, type: 3}
-    animationName: bird
-  - sprite: {fileID: 21300000, guid: 70971ae3dbb4c18449e1e298589255ac, type: 3}
-    animationName: bird10
-  anim: {fileID: 0}
 --- !u!95 &4273895345821418579
 Animator:
   serializedVersion: 3
@@ -112,7 +93,7 @@ Animator:
   m_GameObject: {fileID: 1289357969652595857}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 94865bc016f0b4244a8bc10197b5001b, type: 2}
+  m_Controller: {fileID: 9100000, guid: dbf0d2773e0462745a2854bcc65b7d6e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -130,12 +111,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7748561263111425803}
-  - component: {fileID: 891809604137602266}
+  - component: {fileID: 1255318444789197124}
   - component: {fileID: -6335961258160437918}
   - component: {fileID: -6893423735764484498}
   - component: {fileID: 2346442864788402633}
   m_Layer: 0
-  m_Name: Obstacle1
+  m_Name: WhiteBird
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -156,8 +137,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &891809604137602266
-BoxCollider2D:
+--- !u!60 &1255318444789197124
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -169,7 +150,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.025527358, y: -0.063818336}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -179,9 +160,14 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.9489453, y: 0.59794474}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.26202798, y: 0.34853542}
+      - {x: -0.046950817, y: 0.1682992}
+      - {x: -0.27850014, y: 0.29194263}
+      - {x: -0.52741987, y: -0.21877754}
+      - {x: 0.024374843, y: -0.39316636}
+      - {x: 0.4413042, y: 0.14133531}
 --- !u!50 &-6335961258160437918
 Rigidbody2D:
   serializedVersion: 4
