@@ -17,5 +17,5 @@ public class Template : MonoBehaviour
     {
         if ((Time.time - start) > duration)
             Destroy(this.gameObject);
-    }
+    } 
 }

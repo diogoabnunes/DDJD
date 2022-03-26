@@ -16,6 +16,9 @@ TagManager:
   - Score
   - Enemy
   - Collectibles Detector
+  - MagnetEffect
+  - ContinuousFireEffect
+  - UnstoppableEffect
   layers:
   - Default
   - TransparentFX
@@ -55,4 +58,10 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: MagnetEffect
+    uniqueID: 1302095611
+    locked: 0
+  - name: Player
+    uniqueID: 1703570187
     locked: 0

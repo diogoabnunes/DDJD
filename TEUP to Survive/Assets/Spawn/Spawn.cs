@@ -86,7 +86,7 @@ public class Spawn : MonoBehaviour
         foreach (Position position in completeTemplates[template].powerups) {
             int powerup = Random.Range(0, powerups.Length);
             
-            Instantiate(powerups[powerup], new Vector3(position.x, position.y), transform.rotation);
+            Instantiate(powerups[powerup], transform.position + new Vector3(position.x, position.y, 0), transform.rotation);
         }
         
         numCompleteTemplates++;
