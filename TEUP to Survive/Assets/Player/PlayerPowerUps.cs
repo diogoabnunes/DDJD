@@ -7,11 +7,17 @@ public class PlayerPowerUps : MonoBehaviour
     private bool unstoppable;
     private GameObject player;
     private GameObject collectiblesDetector;
+    
+    private GameObject magnetEffect;
+
+    private float startBlinkEffect = 3f;
+
     // Start is called before the first frame update
     void Start()
     {
         unstoppable = false;
         player = GameObject.FindGameObjectWithTag("Player");
+        magnetEffect = GameObject.FindGameObjectWithTag("MagnetEffect");
         collectiblesDetector = GameObject.FindGameObjectWithTag("Collectibles Detector");
         collectiblesDetector.SetActive(false);
     }
@@ -50,7 +56,16 @@ public class PlayerPowerUps : MonoBehaviour
 
     IEnumerator Attraction(float duration){
         collectiblesDetector.SetActive(true);
-        yield return new WaitForSeconds(duration);
+        if(duration > startBlinkEffect){
+            yield return new WaitForSeconds(duration - startBlinkEffect);
+            magnetEffect.GetComponent<BlinkEffect>().enabled = true;
+            yield return new WaitForSeconds(startBlinkEffect);
+        }else{
+            magnetEffect.GetComponent<BlinkEffect>().enabled = true;
+            yield return new WaitForSeconds(duration);
+        }
+        magnetEffect.GetComponent<BlinkEffect>().enabled = false;
+        magnetEffect.GetComponent<BlinkEffect>().ResetColor();
         collectiblesDetector.SetActive(false);
     }
 }

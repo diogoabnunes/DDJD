@@ -23,7 +23,6 @@ public class TigerJetPack : MonoBehaviour
             jetPackOn = true;
             this.gameObject.GetComponent<SpriteRenderer>().sprite = tigerJetPackOn;
         }else if(jetPackOn){
-            Debug.Log("Deligar");
             this.gameObject.GetComponent<SpriteRenderer>().sprite = tigerJetPackOff;
             jetPackOn = false;
         }
