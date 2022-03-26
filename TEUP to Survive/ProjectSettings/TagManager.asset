@@ -18,6 +18,7 @@ TagManager:
   - Collectibles Detector
   - MagnetEffect
   - ContinuousFireEffect
+  - UnstoppableEffect
   layers:
   - Default
   - TransparentFX

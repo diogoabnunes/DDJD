@@ -10,6 +10,7 @@ public class PlayerPowerUps : MonoBehaviour
     
     private GameObject magnetEffect;
     private GameObject continuousFireEffect;
+    private GameObject unstoppableEffect;
 
     private float startBlinkEffect = 3f;
 
@@ -20,10 +21,12 @@ public class PlayerPowerUps : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         magnetEffect = GameObject.FindGameObjectWithTag("MagnetEffect");
         continuousFireEffect = GameObject.FindGameObjectWithTag("ContinuousFireEffect");
+        unstoppableEffect = GameObject.FindGameObjectWithTag("UnstoppableEffect");
         collectiblesDetector = GameObject.FindGameObjectWithTag("Collectibles Detector");
 
         collectiblesDetector.SetActive(false);
         continuousFireEffect.SetActive(false);
+        unstoppableEffect.SetActive(false);
     }
 
     // Update is called once per frame
@@ -38,9 +41,20 @@ public class PlayerPowerUps : MonoBehaviour
     }
 
     IEnumerator Unstoppable(float duration){
+        unstoppableEffect.SetActive(true);
         unstoppable = true;
-        yield return new WaitForSeconds(duration);
+        if(duration > startBlinkEffect){
+            yield return new WaitForSeconds(duration - startBlinkEffect);
+            unstoppableEffect.GetComponent<BlinkEffect>().enabled = true;
+            yield return new WaitForSeconds(startBlinkEffect);
+        }else{
+            unstoppableEffect.GetComponent<BlinkEffect>().enabled = true;
+            yield return new WaitForSeconds(duration);
+        }
         unstoppable = false;
+        unstoppableEffect.GetComponent<BlinkEffect>().enabled = false;
+        unstoppableEffect.GetComponent<BlinkEffect>().ResetColor();
+        unstoppableEffect.SetActive(false);
     }
 
     public void ActivateContinuousFire(float duration){
