@@ -58,8 +58,7 @@ public class TeacherMovement : MonoBehaviour
             
             if (direction != 0) {
                 float newY = transform.position.y + direction * speedMovementOnY;
-                // Debug.Log(newY);
-                Debug.Log(maxY);
+                
                 if (newY > maxY) newY = maxY;
                 else if (newY < minY) newY = minY;
 
