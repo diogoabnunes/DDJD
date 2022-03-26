@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy1Movement : MonoBehaviour
+public class SecurityGuardMovement : MonoBehaviour
 {
     [SerializeField] private float maxX = 7.5f;
     [SerializeField] private float speedMovementOnY = 0.1f;
+    
+    [SerializeField] private Sprite jetPackOff;
+    [SerializeField] private Sprite jetPackOn;
+    private GameObject securityGuard;
 
     private float direction; // moving up or down
     private float UP = 1f, DOWN = -1f;
@@ -13,6 +17,7 @@ public class Enemy1Movement : MonoBehaviour
     void Start()
     {
         direction = UP;
+        securityGuard = this.gameObject.transform.GetChild(0).gameObject;
     }
 
     void FixedUpdate() {
@@ -30,7 +35,7 @@ public class Enemy1Movement : MonoBehaviour
             x = maxX;
 
             // activate fire on enemy
-            GetComponent<Enemy1Fire>().enabled = true;
+            GetComponent<SecurityGuardFire>().enabled = true;
         } 
 
         transform.position =  new Vector3(x, transform.position.y, 0);
@@ -41,7 +46,13 @@ public class Enemy1Movement : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision){
-        if (collision.tag == "TopBorder") direction = DOWN;
-        else if (collision.tag == "BottomBorder") direction = UP;
+        if (collision.tag == "TopBorder"){ 
+            direction = DOWN;
+            securityGuard.GetComponent<SpriteRenderer>().sprite = jetPackOff;
+        }
+        else if (collision.tag == "BottomBorder"){ 
+            direction = UP;
+            securityGuard.GetComponent<SpriteRenderer>().sprite = jetPackOn;
+        }
     }
 }

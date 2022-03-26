@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5502816763144667469}
   - component: {fileID: 1063357175845229567}
   m_Layer: 0
-  m_Name: Enemy1Shot
+  m_Name: SecurityGuardShot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

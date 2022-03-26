@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy1Fire : MonoBehaviour
+public class SecurityGuardFire : MonoBehaviour
 {
     [SerializeField] private GameObject shot;
     [SerializeField] private float coolDown = 1f; // how much to wait for the next shot
