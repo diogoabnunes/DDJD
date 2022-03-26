@@ -17,6 +17,7 @@ TagManager:
   - Enemy
   - Collectibles Detector
   - MagnetEffect
+  - ContinuousFireEffect
   layers:
   - Default
   - TransparentFX
