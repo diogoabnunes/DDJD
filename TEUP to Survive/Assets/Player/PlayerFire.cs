@@ -26,7 +26,7 @@ public class PlayerFire : MonoBehaviour
     }
 
     private void Shot() {
-        Instantiate(tigerShot, transform.position, transform.rotation);
+        Instantiate(tigerShot, transform.position + new Vector3(0.6f, 0.3f, 0), transform.rotation);
     }
 
     public void SetShotCoolDown(float newCoolDown){

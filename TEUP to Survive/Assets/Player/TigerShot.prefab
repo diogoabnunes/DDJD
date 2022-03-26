@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 128208599220926859}
   - component: {fileID: 128208599220926856}
+  - component: {fileID: 844345158168552209}
   - component: {fileID: -5394036328849568692}
-  - component: {fileID: 5980622188021314631}
   - component: {fileID: 8577004019638109153}
   m_Layer: 0
   m_Name: TigerShot
@@ -56,6 +56,42 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!60 &844345158168552209
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128208599220926857}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.13477273, y: 0.2683716}
+      - {x: 0.037427574, y: 0.35540438}
+      - {x: -0.058555022, y: 0.2968827}
+      - {x: -0.21529399, y: 0.14640306}
+      - {x: -0.2191146, y: -0.15440199}
+      - {x: 0.03301972, y: -0.35727584}
+      - {x: 0.12738211, y: -0.2851177}
+      - {x: 0.16163455, y: -0.21132997}
+      - {x: 0.18075047, y: -0.08486396}
+      - {x: 0.18373854, y: 0.085692994}
+      - {x: 0.17197348, y: 0.19279872}
 --- !u!114 &-5394036328849568692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,23 +104,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57838cf281c06b94a8a19f074c10a0fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotSpeed: 4
---- !u!58 &5980622188021314631
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 128208599220926857}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.00042185187, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.14931884
 --- !u!114 &8577004019638109153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,6 +116,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11688d17f3f74d448b2f121ee799769f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 4
+  directionLeft: 0
 --- !u!1 &128208599546105486
 GameObject:
   m_ObjectHideFlags: 0
@@ -123,7 +144,7 @@ Transform:
   m_GameObject: {fileID: 128208599546105486}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 128208599220926859}
   m_RootOrder: 0
@@ -168,8 +189,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  m_Color: {r: 1, g: 0.48339492, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 0ad9262a65056654eadbbf14ede8a4d0, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
