@@ -1192,7 +1192,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1901240268}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.06, y: 0, z: 0}
+  m_LocalPosition: {x: 11.96, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1210,52 +1210,94 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13259c13dfb8b274cb0b52a6dceb1462, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstacles:
-  - spawnableObject: {fileID: 6062321105985182828, guid: 8e6cf701572bfb2419927219fd384ce0, type: 3}
-    generationRate: 3
-    minY: -1.5
+  completeTemplates:
+  - templateCoins:
+    - {fileID: 5474533734714552139, guid: 0bdf951f1d56fc1498604718b763da0e, type: 3}
+    - {fileID: 7876851205482642934, guid: 119af579d6f469440864563748b6cc7e, type: 3}
+    templateObstacles:
+    - {fileID: 3641329639072642706, guid: ba1ea5b87f8e85547b0d16d45a6119f2, type: 3}
+    - {fileID: 2095912581011794415, guid: a09ac3ec568ff35479d7b9fdad5d8eb6, type: 3}
+    - {fileID: 7058671029609808851, guid: 0df48a53890694f46be98f0228381d9e, type: 3}
+    powerups: []
+    duration: 10
+  - templateCoins:
+    - {fileID: 2612614626605949996, guid: 96b8d93290a9b1942aac7c91fa9f3998, type: 3}
+    - {fileID: 3756078819435341864, guid: debee8154ce855f49ba24b57c113bb02, type: 3}
+    - {fileID: 3648776441461177966, guid: 331dbd86ef44e7e4aba38ee373e51d96, type: 3}
+    templateObstacles:
+    - {fileID: 7381434161225801762, guid: 576944326ac40be4bb11a858e8da3b87, type: 3}
+    - {fileID: 7680807771193413795, guid: 55c144eaa64d92f498e4fda3b9f434d7, type: 3}
+    - {fileID: 8777210977952692339, guid: 0d1aef53fda48ea4f8e649f34df966e2, type: 3}
+    - {fileID: 5816164628234005925, guid: e16ce4cfde65be04eb8f6550546402b2, type: 3}
+    - {fileID: 292324238014048511, guid: a979aaaa142b27c4c8d42051e419dd0d, type: 3}
+    - {fileID: 1383291524940897469, guid: a373616f5937ebd45b6a2a9bccd991d7, type: 3}
+    powerups:
+    - x: 8
+      y: 3
+    duration: 10
+  - templateCoins:
+    - {fileID: 1260141616412895304, guid: b508690549b1dcd4f92ff4e889958fa8, type: 3}
+    - {fileID: 1042091131738804741, guid: eaa6d9d8478353a488fa8fad4d6d2d9b, type: 3}
+    - {fileID: 8624850122339301267, guid: ba61e7fd6d5f83c47ad109da0b74ef01, type: 3}
+    templateObstacles:
+    - {fileID: 8473111975526229116, guid: 304abddc18bda744b8d3c80c9b646714, type: 3}
+    - {fileID: 5434722311087764522, guid: f524748c992cb5047a980ac8450da6f2, type: 3}
+    - {fileID: 6248538592024885147, guid: 0b633b6800fb68e4f963aac6db1e28fa, type: 3}
+    - {fileID: 228354928087814478, guid: 2859c4019b3aed94591bea1192095126, type: 3}
+    - {fileID: 6082326771717121603, guid: 4f93423d626521c4c83633866b1d8548, type: 3}
+    - {fileID: 7769208475003845413, guid: 643eddf2baa43ce4d9f4384d8cb82211, type: 3}
+    powerups:
+    - x: 6
+      y: 1.5
+    duration: 10
+  coinTemplates:
+  - template: {fileID: 4435374950281754307, guid: 6faf6ad5643344348aa2517bd99668c3, type: 3}
+    minY: 0.1
+    maxY: 3.5
+    duration: 5
+  - template: {fileID: 3230847710390636580, guid: 89406a3625f58694b8c84b8895e529e8, type: 3}
+    minY: 0
+    maxY: 4.5
+    duration: 5
+  - template: {fileID: 8135950759401002022, guid: a5640fe2d698d904aa539ac80cf7edf6, type: 3}
+    minY: 1
     maxY: 4
-    maxScale: -1
-  - spawnableObject: {fileID: 5070938181936594641, guid: 1b0656fcde4487e478c77f40fb0a2f38, type: 3}
-    generationRate: 3
-    minY: -2
-    maxY: -50
-    maxScale: 4
-  collectibles:
-  - spawnableObject: {fileID: 6972485158811120042, guid: 1aff9bf60196ad44b81e963f8e4ac798, type: 3}
-    generationRate: 2
-    minY: -1.5
+    duration: 5
+  - template: {fileID: 8892062774294846586, guid: 0e045e83862fb41409707d8904fb6f9e, type: 3}
+    minY: 4
     maxY: 4
-    maxScale: -1
-  powerUps:
-  - spawnableObject: {fileID: 1966270341443122201, guid: a4d982b5a1e31c946be21bee2efd6156, type: 3}
-    generationRate: 2
+    duration: 5
+  - template: {fileID: 4694668708197245431, guid: 22195f1972112d54b8f58dc89bd68937, type: 3}
+    minY: -1.1
+    maxY: -1.1
+    duration: 5
+  - template: {fileID: 8002375792971942181, guid: 99888c46d0ae6a246bf299173ef554cf, type: 3}
     minY: -1.5
-    maxY: 4
-    maxScale: -1
-  - spawnableObject: {fileID: 7895042982374333859, guid: 1d568527ea0717f47a74f8402f1677b0, type: 3}
-    generationRate: 2
-    minY: -1.5
-    maxY: 4
-    maxScale: -1
-  - spawnableObject: {fileID: 236406917796115284, guid: 09ee1fa7417d0ef4c8821f494fe346fe, type: 3}
-    generationRate: 2
-    minY: -1.5
-    maxY: 4
-    maxScale: -1
-  enemies:
-  - spawnableObject: {fileID: 4877054648337649886, guid: 51a45dadcf59b1047b46f41458f4c88c, type: 3}
-    generationRate: 0
-    minY: -1.5
-    maxY: 4
-    maxScale: -1
-  - spawnableObject: {fileID: 7939817613462860966, guid: 3e835f21e37581c4b99ec32da4f9e743, type: 3}
-    generationRate: 20
-    minY: -0.4
+    maxY: 1.5
+    duration: 5
+  - template: {fileID: 8832869214436835731, guid: 1156494220c04454f9c41a255b5900bd, type: 3}
+    minY: 0
+    maxY: 2
+    duration: 5
+  - template: {fileID: 2047167061972449806, guid: 64a7f9f23faaca0419e208e04d81f4b6, type: 3}
+    minY: 0
+    maxY: 2
+    duration: 5
+  - template: {fileID: 5654920781615799124, guid: 5676ec91f5672c64b955ffb75672a76a, type: 3}
+    minY: 0
     maxY: 3
-    maxScale: -1
-  numObstaclesBetweenEnemies: 4
-  numCollectiblesBetweenPowerUps: 3
+    duration: 3
+  - template: {fileID: 2912384596799732781, guid: b9ef2e759d08c90459a459ce6e4488c3, type: 3}
+    minY: 0
+    maxY: 0.5
+    duration: 6
+  powerups:
+  - {fileID: 1966270341443122201, guid: a4d982b5a1e31c946be21bee2efd6156, type: 3}
+  - {fileID: 7895042982374333859, guid: 1d568527ea0717f47a74f8402f1677b0, type: 3}
+  - {fileID: 236406917796115284, guid: 09ee1fa7417d0ef4c8821f494fe346fe, type: 3}
+  enemies:
+  - {fileID: 4877054648337649886, guid: 51a45dadcf59b1047b46f41458f4c88c, type: 3}
+  - {fileID: 7939817613462860966, guid: 3e835f21e37581c4b99ec32da4f9e743, type: 3}
 --- !u!1 &1904041247
 GameObject:
   m_ObjectHideFlags: 0

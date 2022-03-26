@@ -10,9 +10,13 @@ public class Enemy1Movement : MonoBehaviour
     private float direction; // moving up or down
     private float UP = 1f, DOWN = -1f;
 
+    private bool xLocked;
+
     void Start()
     {
         direction = UP;
+
+        xLocked = false;
     }
 
     void FixedUpdate() {
@@ -20,20 +24,22 @@ public class Enemy1Movement : MonoBehaviour
     }
 
     void Move() {
-        if (transform.position.x != maxX) MoveHorizontal();
+        if (!xLocked) MoveHorizontal();
         else MoveVertical();
     }
 
     void MoveHorizontal() {
         float x = transform.position.x - 0.1f;
         if (x < maxX) {
-            x = maxX;
+            xLocked = true;
+
+            // disable movement on x
+            GetComponent<FixedObject>().enabled = false;
+            GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
 
             // activate fire on enemy
             GetComponent<Enemy1Fire>().enabled = true;
-        } 
-
-        transform.position =  new Vector3(x, transform.position.y, 0);
+        }
     }
 
     void MoveVertical() {
