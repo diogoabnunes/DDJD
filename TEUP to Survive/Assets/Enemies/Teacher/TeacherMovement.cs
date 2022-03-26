@@ -2,11 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy2Movement : MonoBehaviour
+public class TeacherMovement : MonoBehaviour
 {
     [SerializeField] private float maxX = 7.5f;
-    [SerializeField] private float maxY = 3.1f, minY = -0.4f;
+    [SerializeField] private float maxY, minY;
     [SerializeField] private float speedMovementOnY = 0.05f;
+
+    [SerializeField] private Sprite jetPackOff;
+    [SerializeField] private Sprite jetPackOn;
+    private GameObject teacherTop;
+    private GameObject teacherBottom;
 
     private float direction; // moving up or down
     private float nextUpdateOnY;
@@ -20,6 +25,9 @@ public class Enemy2Movement : MonoBehaviour
         nextUpdateOnY = 0f;
         player = GameObject.FindGameObjectWithTag("Player");
         movementLocked = false;
+
+        teacherBottom = this.gameObject.transform.GetChild(0).gameObject;
+        teacherTop = this.gameObject.transform.GetChild(1).gameObject;
     }
 
     void FixedUpdate() {
@@ -37,8 +45,8 @@ public class Enemy2Movement : MonoBehaviour
             x = maxX;
 
             // activate fire on enemy
-            GetComponent<Enemy2Fire>().enabled = true;
-            GetComponent<Enemy2>().enabled = true;
+            GetComponent<TeacherFire>().enabled = true;
+            GetComponent<Teacher>().enabled = true;
         } 
 
         transform.position =  new Vector3(x, transform.position.y, 0);
@@ -50,24 +58,34 @@ public class Enemy2Movement : MonoBehaviour
             
             if (direction != 0) {
                 float newY = transform.position.y + direction * speedMovementOnY;
-                // Debug.Log(transform.position.y);
+                // Debug.Log(newY);
+                Debug.Log(maxY);
                 if (newY > maxY) newY = maxY;
                 else if (newY < minY) newY = minY;
 
                 transform.position = new Vector3(transform.position.x, newY, 0);
             }
-
-            // nextUpdateOnY = Time.time + 0.1f;
         }
     }
 
     void updateDirection() {
         if ((player.transform.position.y - transform.position.y) == 0) direction = 0f;
         direction = (player.transform.position.y - transform.position.y) / Mathf.Abs(player.transform.position.y - transform.position.y);
+        
+        if( (direction >= 0f) || (transform.position.y == minY)){
+            teacherBottom.GetComponent<SpriteRenderer>().sprite = jetPackOn;
+            teacherTop.GetComponent<SpriteRenderer>().sprite = jetPackOn;
+            return;
+        }
+
+        teacherBottom.GetComponent<SpriteRenderer>().sprite = jetPackOff;
+        teacherTop.GetComponent<SpriteRenderer>().sprite = jetPackOff;
     }
 
     public void LockMovement() {
         movementLocked = true;
+        teacherBottom.GetComponent<SpriteRenderer>().sprite = jetPackOn;
+        teacherTop.GetComponent<SpriteRenderer>().sprite = jetPackOn;
     }
 
     public void UnlockMovement() {

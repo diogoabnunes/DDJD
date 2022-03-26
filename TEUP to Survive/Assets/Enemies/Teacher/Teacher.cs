@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy2 : MonoBehaviour
+public class Teacher : MonoBehaviour
 {
     [SerializeField] private int numRounfOfShots = 3;
     [SerializeField] private float durationOfShooting = 3f;
@@ -34,13 +34,13 @@ public class Enemy2 : MonoBehaviour
             stopShooting = Time.time + durationOfShooting;
             isShooting = true;
 
-            GetComponent<Enemy2Fire>().SetFire(true);
-            GetComponent<Enemy2Movement>().LockMovement();
+            GetComponent<TeacherFire>().SetFire(true);
+            GetComponent<TeacherMovement>().LockMovement();
         }
 
         if (Time.time > stopShooting && isShooting && timeToDie == -1) {
-            GetComponent<Enemy2Fire>().SetFire(false);
-            GetComponent<Enemy2Movement>().UnlockMovement();
+            GetComponent<TeacherFire>().SetFire(false);
+            GetComponent<TeacherMovement>().UnlockMovement();
 
             numRounfOfShots--;
             isShooting = false;
@@ -55,8 +55,8 @@ public class Enemy2 : MonoBehaviour
         died = true;
 
         // disable components
-        GetComponent<Enemy2Fire>().enabled = false;
-        GetComponent<Enemy2Movement>().enabled = false;
+        GetComponent<TeacherFire>().enabled = false;
+        GetComponent<TeacherMovement>().enabled = false;
 
         // go down the screen
         GetComponent<Rigidbody2D>().gravityScale = 3;

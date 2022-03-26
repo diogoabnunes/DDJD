@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy2Fire : MonoBehaviour
+public class TeacherFire : MonoBehaviour
 {
     [SerializeField] private GameObject shot;
     [SerializeField] private float coolDown = 0.1f;
@@ -29,8 +29,8 @@ public class Enemy2Fire : MonoBehaviour
     }
 
     void Shot() {
-        Instantiate(shot, transform.position + new Vector3(0, 1.3f, 0), transform.rotation); // top shot
-        Instantiate(shot, transform.position - new Vector3(0, 1.3f, 0), transform.rotation); // bottom shot
+        Instantiate(shot, transform.position + new Vector3(0, 1.15f * transform.localScale.y, 0), transform.rotation); // top shot
+        Instantiate(shot, transform.position - new Vector3(0, 0.85f * transform.localScale.y, 0), transform.rotation); // bottom shot
     }
 
     public void SetFire(bool aux) {
