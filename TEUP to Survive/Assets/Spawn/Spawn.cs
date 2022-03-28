@@ -11,24 +11,20 @@ using UnityEngine;
     public GameObject[] templateCoins;
     public GameObject[] templateObstacles;
     public Position[] powerups;
-
-    public float duration; // duration of template
 }
 
-[System.Serializable] public class CoinTemplate {
+[System.Serializable] public class CollectibleTemplate {
     public GameObject template;
 
     public float minY;
     public float maxY;
-
-    public float duration; // duration of template
 }
 
 public class Spawn : MonoBehaviour
 {
     [SerializeField] private CompleteTemplate[] completeTemplates;      // completeTemplates
-    [SerializeField] private CoinTemplate[] coinTemplates;              // coinTemplates
-    [SerializeField] private GameObject[] powerups;                     // powerups
+    [SerializeField] private CollectibleTemplate[] coinTemplates;       // coinTemplates
+    [SerializeField] private CollectibleTemplate[] powerupTemplates;    // coinTemplates
     [SerializeField] private GameObject[] enemies;                      // enemies
 
     [SerializeField] private int numTemplatesBetweenEnemies;
@@ -54,7 +50,7 @@ public class Spawn : MonoBehaviour
     {
         if (CanSpawnEnemie()) SpawnEnemie();
         else if (CanSpawnCompleteTemplate()) SpawnCompleteTemplate();
-        else if (CanSpawnCoinTemplate()) SpawnCoinTemplate();
+        else if (CanSpawnCollectibleTemplate()) SpawnCollectibleTemplate();
 
         // if (CanSpawn()) SpawnCoinTemplate();
         // if (CanSpawn()) SpawnCompleteTemplate();
@@ -68,7 +64,7 @@ public class Spawn : MonoBehaviour
         return CanSpawn() && numEnemiesAllive == 0;
     }
 
-    bool CanSpawnCoinTemplate() {
+    bool CanSpawnCollectibleTemplate() {
         return CanSpawn() && numEnemiesAllive != 0;
     }
 
@@ -88,7 +84,6 @@ public class Spawn : MonoBehaviour
 
     void SpawnCompleteTemplate() {
         int template = Random.Range(0, completeTemplates.Length);
-        // int template = 0;
 
         // spawn coins
         foreach (GameObject templateCoin in completeTemplates[template].templateCoins) {
@@ -111,11 +106,18 @@ public class Spawn : MonoBehaviour
         // spawn powerups
         foreach (Position position in completeTemplates[template].powerups) {
             if (generate()) {
-                int powerup = Random.Range(0, powerups.Length);
+                int powerup = Random.Range(0, powerupTemplates.Length);
                 
-                Instantiate(powerups[powerup], transform.position + new Vector3(position.x, position.y, 0), transform.rotation);
+                Instantiate(powerupTemplates[powerup].template, transform.position + new Vector3(position.x, position.y, 0), transform.rotation);
             }
         }
+    }
+
+    void SpawnCollectibleTemplate() {
+        float PROBABILITY_OF_COIN = 0.75f;
+
+        if (Random.Range(0.0f, 1.0f) > PROBABILITY_OF_COIN) SpawnPowerUpTemplate();
+        else SpawnCoinTemplate();
     }
 
     void SpawnCoinTemplate() {
@@ -125,6 +127,15 @@ public class Spawn : MonoBehaviour
         Instantiate(coinTemplates[coin].template, new Vector3(transform.position.x, y, 0), coinTemplates[coin].template.transform.rotation);
 
         numTemplates++;
+    }
+
+    void SpawnPowerUpTemplate() {
+        int powerup = Random.Range(0, powerupTemplates.Length);
+        float y = Random.Range(powerupTemplates[powerup].minY, powerupTemplates[powerup].maxY);
+
+        Instantiate(powerupTemplates[powerup].template, new Vector3(transform.position.x, y, 0), powerupTemplates[powerup].template.transform.rotation);
+
+        nextSpawn = Time.time + 5f;
     }
 
     bool generate() {
@@ -154,8 +165,6 @@ public class Spawn : MonoBehaviour
 
         if (CanReset())
             Reset();
-
-        Debug.Log("Templates In Screen: " + numTemplatesInScreen);
     }
 
     bool CanReset() {

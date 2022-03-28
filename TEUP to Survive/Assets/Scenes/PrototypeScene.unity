@@ -1635,7 +1635,6 @@ MonoBehaviour:
     - {fileID: 878371197518356232, guid: 2db140bc10142ea468c9f72b193168d9, type: 3}
     - {fileID: 7350575689419052538, guid: 6344c9b341ed57f419f8dd24f3a9f8b1, type: 3}
     powerups: []
-    duration: 0
   - templateCoins:
     - {fileID: 2558141370800346711, guid: 5da67206c3c5c4249a39e0bf7efce030, type: 3}
     - {fileID: 8824096475029065514, guid: 07f169a4b518dfb47b710557e3b048f6, type: 3}
@@ -1647,33 +1646,49 @@ MonoBehaviour:
     - {fileID: 598403938028716119, guid: 9c1b6f3d66df9b440a83efd6551c75cc, type: 3}
     - {fileID: 7685593411045955610, guid: 5b5e81aeb61495a4b9aa9a4d8952467b, type: 3}
     - {fileID: 6615047887533286431, guid: 0a16b995591aa61458c1a12202b0cfd8, type: 3}
-    powerups: []
-    duration: 0
+    powerups:
+    - x: 9.5
+      y: 2.5
+  - templateCoins:
+    - {fileID: 465123647602730913, guid: 31d35e93aa8e6dd459360e3c1af45229, type: 3}
+    - {fileID: 8328272459355469997, guid: bf348b6a3765ef14c9fddca49b5203ee, type: 3}
+    - {fileID: 7965566119909437517, guid: bddc89cd0285bd149850c98a3972378f, type: 3}
+    templateObstacles:
+    - {fileID: 5955768111190803649, guid: 91e32be18e571914bb08318c2656b7b5, type: 3}
+    - {fileID: 7917360208045517885, guid: d4583b11d8d46ba46bc52de7435510e6, type: 3}
+    - {fileID: 6924189584298213618, guid: 48eff08748f53fb45b47cfe0510b88b5, type: 3}
+    - {fileID: 6134966578185459738, guid: d569257f62ff4fb48b811e0130ba5f74, type: 3}
+    - {fileID: 3730112908420357153, guid: f07afd149aba8fa4aa301ad1f8e1d166, type: 3}
+    - {fileID: 7171490934731542132, guid: 6f47d36288209a847a8edcc6074fbf0e, type: 3}
+    powerups:
+    - x: 7.97
+      y: 0.59
   coinTemplates:
   - template: {fileID: 3230847710390636580, guid: 89406a3625f58694b8c84b8895e529e8, type: 3}
     minY: 0
     maxY: 4.5
-    duration: 5
   - template: {fileID: 8002375792971942181, guid: 99888c46d0ae6a246bf299173ef554cf, type: 3}
     minY: -1.5
     maxY: 1.5
-    duration: 5
   - template: {fileID: 2047167061972449806, guid: 64a7f9f23faaca0419e208e04d81f4b6, type: 3}
     minY: 0
     maxY: 2
-    duration: 5
   - template: {fileID: 5654920781615799124, guid: 5676ec91f5672c64b955ffb75672a76a, type: 3}
     minY: 0
     maxY: 3
-    duration: 3
   - template: {fileID: 2912384596799732781, guid: b9ef2e759d08c90459a459ce6e4488c3, type: 3}
     minY: 0
     maxY: 0.5
-    duration: 6
-  powerups:
-  - {fileID: 1966270341443122201, guid: a4d982b5a1e31c946be21bee2efd6156, type: 3}
-  - {fileID: 7895042982374333859, guid: 1d568527ea0717f47a74f8402f1677b0, type: 3}
-  - {fileID: 236406917796115284, guid: 09ee1fa7417d0ef4c8821f494fe346fe, type: 3}
+  powerupTemplates:
+  - template: {fileID: 1966270341443122201, guid: a4d982b5a1e31c946be21bee2efd6156, type: 3}
+    minY: -1
+    maxY: 3
+  - template: {fileID: 7895042982374333859, guid: 1d568527ea0717f47a74f8402f1677b0, type: 3}
+    minY: -1
+    maxY: 3
+  - template: {fileID: 236406917796115284, guid: 09ee1fa7417d0ef4c8821f494fe346fe, type: 3}
+    minY: -1
+    maxY: 3
   enemies:
   - {fileID: 7939817613462860966, guid: 3e835f21e37581c4b99ec32da4f9e743, type: 3}
   numTemplatesBetweenEnemies: 4
