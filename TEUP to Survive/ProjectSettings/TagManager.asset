@@ -19,6 +19,7 @@ TagManager:
   - MagnetEffect
   - ContinuousFireEffect
   - UnstoppableEffect
+  - InScene
   layers:
   - Default
   - TransparentFX

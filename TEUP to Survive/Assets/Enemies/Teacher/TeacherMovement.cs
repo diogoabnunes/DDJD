@@ -20,11 +20,14 @@ public class TeacherMovement : MonoBehaviour
 
     private bool movementLocked;
 
+    private bool xLocked;
+
     void Start()
     {
         nextUpdateOnY = 0f;
         player = GameObject.FindGameObjectWithTag("Player");
         movementLocked = false;
+        xLocked = false;
 
         teacherBottom = this.gameObject.transform.GetChild(0).gameObject;
         teacherTop = this.gameObject.transform.GetChild(1).gameObject;
@@ -35,14 +38,18 @@ public class TeacherMovement : MonoBehaviour
     }
 
     void Move() {
-        if (transform.position.x != maxX) MoveHorizontal();
+        if (!xLocked) MoveHorizontal();
         else MoveVertical();
     }
 
     void MoveHorizontal() {
         float x = transform.position.x - 0.1f;
         if (x < maxX) {
-            x = maxX;
+            xLocked = true;
+
+            // disable movement on x
+            GetComponent<FixedObject>().enabled = false;
+            GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
 
             // activate fire on enemy
             GetComponent<TeacherFire>().enabled = true;
