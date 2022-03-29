@@ -204,6 +204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0980fa3fcb90564dae4a55e9d7c7157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scorePopUp: {fileID: 6580180294443612332, guid: f8086f1801525dd4f92b620fffc62bee, type: 3}
 --- !u!114 &-7850897305796582528
 MonoBehaviour:
   m_ObjectHideFlags: 0
