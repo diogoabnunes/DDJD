@@ -95,8 +95,8 @@ GameObject:
   - component: {fileID: 7763042286531874598}
   - component: {fileID: 2395207452670851313}
   - component: {fileID: -3002752082112354305}
+  - component: {fileID: -5089486558313564105}
   - component: {fileID: 1278702668112542146}
-  - component: {fileID: -2032384319280959367}
   m_Layer: 0
   m_Name: SecurityGuard
   m_TagString: Untagged
@@ -198,7 +198,6 @@ MonoBehaviour:
   speedMovementOnY: 0.1
   jetPackOff: {fileID: 21300000, guid: d7b748f3b16c88342a8a04446a9d49aa, type: 3}
   jetPackOn: {fileID: 21300000, guid: 6f955b1fcd6fb8d44a7fca4ed9aae195, type: 3}
-  securityGuard: {fileID: 0}
 --- !u!114 &-3002752082112354305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,6 +212,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shot: {fileID: 6535076530886365479, guid: 6500563e15253fb4bbb4d94cd8a7e102, type: 3}
   coolDown: 1
+--- !u!114 &-5089486558313564105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4877054648337649886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a8d71ed1af34284ea7a85d5ef47b5de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1278702668112542146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,18 +238,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numShotsCanTake: 1
   spawn: {fileID: 0}
-<<<<<<< HEAD:TEUP to Survive/Assets/Enemies/Enemy1/Enemy1.prefab
---- !u!114 &-2032384319280959367
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4877054648337649886}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a8d71ed1af34284ea7a85d5ef47b5de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-=======
->>>>>>> main:TEUP to Survive/Assets/Enemies/SecurityGuard/SecurityGuard.prefab
