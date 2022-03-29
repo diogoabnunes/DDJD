@@ -2,139 +2,208 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/**
-    * Apos gerar X obstaculos gera um inimigo aleatorio.
-*/
+[System.Serializable] public class Position {
+    public float x;
+    public float y;
+}
 
-[System.Serializable] public class SpawnableObjects {
-    public GameObject spawnableObject;
-    public float generationRate;
+[System.Serializable] public class CompleteTemplate {
+    public GameObject[] templateCoins;
+    public GameObject[] templateObstacles;
+    public Position[] powerups;
+}
+
+[System.Serializable] public class CollectibleTemplate {
+    public GameObject template;
+
     public float minY;
-    public float maxY = -50;
-    public float maxScale = -1;
+    public float maxY;
 }
 
 public class Spawn : MonoBehaviour
 {
-    // Objects to spawn
-    [SerializeField] private SpawnableObjects[] obstacles;
-    [SerializeField] private SpawnableObjects[] collectibles;
-    [SerializeField] private SpawnableObjects[] powerUps;
-    [SerializeField] private SpawnableObjects[] enemies;
+    [SerializeField] private CompleteTemplate[] completeTemplates;      // completeTemplates
+    [SerializeField] private CollectibleTemplate[] coinTemplates;       // coinTemplates
+    [SerializeField] private CollectibleTemplate[] powerupTemplates;    // coinTemplates
+    [SerializeField] private GameObject[] enemies;                      // enemies
 
-    // Logic of spawning
-    [SerializeField] private int numObstaclesBetweenEnemies;
-    [SerializeField] private int numCollectiblesBetweenPowerUps;
-
-    private bool spawnObstacle;
-    private bool spawnCollectible;
-    
-    private int currObstaclesBetweenEnemies;
-    private int currCollectiblesBetweenPowerUps;
-
-    private int numEnemiesLive;
+    [SerializeField] private int numTemplatesBetweenEnemies;
+    [SerializeField] private float PROBABILITY_OF_COIN_WITH_ENEMIES;
 
     private float nextSpawn;
     
+    private int numEnemiesAllive;
+
+    private int numTemplates;
+    private int numTemplatesInScreen;
+
+    private bool reset;
+    
     void Start()
     {
-        nextSpawn = 0f;
+        nextSpawn = -1f;
 
-        currObstaclesBetweenEnemies = 0;
-        currCollectiblesBetweenPowerUps = 0;
+        numEnemiesAllive = 0;
 
-        spawnObstacle = true;
-        spawnCollectible = true;
+        numTemplates = 0;
+        numTemplatesInScreen = 0;
 
-        numEnemiesLive = 0;
+        reset = false;
     }
 
     void Update()
     {
-        if (CanSpawn()) {
-            int spawnable = Random.Range(0, 2);
-            
-            if (spawnable == 0) { // spawn an obstacle or an enemy
-                if (spawnObstacle) SpawnObstacle();
-                else SpawnEnemie();
-            }
-            else { // spawn a collectible or powerup
-                if (spawnCollectible) SpawnCollectible();
-                else SpawnPowerUp();
-            }
-        }
+        if (CanSpawnEnemie()) SpawnEnemie();
+        else if (CanSpawnCompleteTemplate()) SpawnCompleteTemplate();
+        else if (CanSpawnCollectibleTemplate()) SpawnCollectibleTemplate();
     }
 
-    /**
-        There can't be any enemy on scene, and spawnTime must be reached.
-    */
+    bool CanSpawnEnemie() {
+        return CanSpawn() 
+            && numTemplates >= numTemplatesBetweenEnemies
+            && !AreEnemiesAllive();
+    }
+
+    bool CanSpawnCompleteTemplate() {
+        return CanSpawn() && !AreEnemiesAllive();
+    }
+
+    bool CanSpawnCollectibleTemplate() {
+        return CanSpawn() && AreEnemiesAllive();
+    }
+
     bool CanSpawn() {
-        return Time.time > nextSpawn && numEnemiesLive == 0;
+        return Time.time > nextSpawn && numTemplates == numTemplatesInScreen;
     }
 
-    void SpawnObject(GameObject spawnableObject, float minY, float maxY, float maxScale) {
-        float y = minY;
-        if (maxY > minY) y = Random.Range(minY, maxY);
-
-        float scale = 1;
-        if (maxScale > 0) {
-            // vary height of the obstacle
-            scale = Random.Range(1, maxScale);
-
-            // needed so that obstacle is not flying
-            y = y + ((scale * 0.5f) - 0.5f);
-        }
-        
-        GameObject newObject = Instantiate(spawnableObject, transform.position + new Vector3(0, y, 0), transform.rotation);
-        if (scale > 1) newObject.transform.localScale = new Vector3(scale, scale, 1);
+    bool AreEnemiesAllive() {
+        return numEnemiesAllive != 0;
     }
 
-    void SpawnCollectible() {
-        SpawnObject(collectibles[0].spawnableObject, collectibles[0].minY, collectibles[0].maxY, collectibles[0].maxScale);
+    // --------------------------------------------------------------------------------------------------------------------
 
-        currCollectiblesBetweenPowerUps++;
-        if (currCollectiblesBetweenPowerUps % numCollectiblesBetweenPowerUps == 0) {
-            spawnCollectible = false;
-            currCollectiblesBetweenPowerUps = 0; // reset counting
+    void SpawnEnemie() {
+        int enemie = Random.Range(0, enemies.Length);
+
+        Instantiate(enemies[enemie], transform.position, transform.rotation);
+
+        numEnemiesAllive++;
+    }
+
+    // --------------------------------------------------------------------------------------------------------------------
+
+    void SpawnCompleteTemplate() {
+        // choose one template
+        int template = Random.Range(0, completeTemplates.Length);
+
+        bool generatedTemplate = false;
+
+        // spawn coins
+        foreach (GameObject templateCoin in completeTemplates[template].templateCoins) {
+            if (generate()) { 
+                generateTemplate(templateCoin, transform.position, transform.rotation);
+                generatedTemplate = true;
+            }
         }
 
-        nextSpawn = Time.time + collectibles[0].generationRate;
+        // spawn obstacles
+        foreach (GameObject templateObstacle in completeTemplates[template].templateObstacles) {
+            if (generate()) {
+                generateTemplate(templateObstacle, transform.position, transform.rotation);
+                generatedTemplate = true;
+            }
+        }
+
+        // spawn powerups
+        foreach (Position position in completeTemplates[template].powerups) {
+            if (generate() && generatedTemplate) 
+                generatePowerUp(true, 
+                                transform.position + new Vector3(position.x, position.y, 0),
+                                transform.rotation);
+        }
+    }
+
+    // --------------------------------------------------------------------------------------------------------------------
+
+    void SpawnCollectibleTemplate() {
+        if (Random.Range(0.0f, 1.0f) > PROBABILITY_OF_COIN_WITH_ENEMIES) SpawnPowerUp();
+        else SpawnCoinTemplate();
+    }
+
+    void SpawnCoinTemplate() {
+        int coin = Random.Range(0, coinTemplates.Length);
+        float y = Random.Range(coinTemplates[coin].minY, coinTemplates[coin].maxY);
+
+        generateTemplate(coinTemplates[coin].template, 
+                        new Vector3(transform.position.x, y, 0), 
+                        coinTemplates[coin].template.transform.rotation);
     }
 
     void SpawnPowerUp() {
-        int powerUpSelected = Random.Range(0, powerUps.Length);
-        SpawnObject(powerUps[powerUpSelected].spawnableObject, powerUps[powerUpSelected].minY, powerUps[powerUpSelected].maxY, powerUps[powerUpSelected].maxScale);
-        
-        spawnCollectible = true;
+        generatePowerUp(false, Vector3.zero, transform.rotation);
 
-        nextSpawn = Time.time + powerUps[powerUpSelected].generationRate;
+        nextSpawn = Time.time + 5f;
     }
 
-    void SpawnObstacle() {
-        int obstacleSelected = Random.Range(0, obstacles.Length);
-        SpawnObject(obstacles[obstacleSelected].spawnableObject, obstacles[obstacleSelected].minY, obstacles[obstacleSelected].maxY, obstacles[obstacleSelected].maxScale);
+    // --------------------------------------------------------------------------------------------------------------------
 
-        currObstaclesBetweenEnemies++;
-        if (currObstaclesBetweenEnemies % numObstaclesBetweenEnemies == 0) {
-            spawnObstacle = false;
-            currObstaclesBetweenEnemies = 0; // reset counting
+    bool generate() {
+        return Random.Range(0, 2) == 1;
+    }
+
+    void generateTemplate(GameObject template, Vector3 position, Quaternion rotation) {
+        Instantiate(template, position, rotation);
+
+        numTemplates++;
+    }
+
+    void generatePowerUp(bool defined, Vector3 position, Quaternion rotation) {
+        int powerup = Random.Range(0, powerupTemplates.Length);
+
+        if (!defined) {
+            float y = Random.Range(powerupTemplates[powerup].minY, powerupTemplates[powerup].maxY);
+            position = new Vector3(transform.position.x, y, 0);
+            rotation = powerupTemplates[powerup].template.transform.rotation;
         }
 
-        nextSpawn = Time.time + obstacles[0].generationRate;
+        Instantiate(powerupTemplates[powerup].template, position, rotation);
     }
 
-    void SpawnEnemie() {
-        int enemySelected = Random.Range(0, enemies.Length);
-        SpawnObject(enemies[enemySelected].spawnableObject, enemies[enemySelected].minY, enemies[enemySelected].maxY, enemies[enemySelected].maxScale);
-
-        numEnemiesLive++;
-        
-        nextSpawn = Time.time + enemies[enemySelected].generationRate;
-    }
+    // ------------------------------------------------------------------------------------------------
 
     public void EnemieDied() {
-        numEnemiesLive--;
+        reset = true;
+        numEnemiesAllive--;
 
-        if (numEnemiesLive == 0) spawnObstacle = true;
+        if (numEnemiesAllive < 0) 
+            numEnemiesAllive = 0;
+
+        if (Time.time > nextSpawn)
+            nextSpawn = Time.time;
+
+        if (CanReset())
+            Reset();
+    }
+
+    public void TemplateInScreen() {
+        if (numTemplatesInScreen < numTemplates)
+            numTemplatesInScreen++;
+
+        if (numTemplatesInScreen == numTemplates)
+            nextSpawn = Time.time + 2f;
+
+        if (CanReset())
+            Reset();
+    }
+
+    bool CanReset() {
+        return numTemplatesInScreen == numTemplates && reset;
+    }
+
+    void Reset() {
+        numTemplates = 0;
+        numTemplatesInScreen = 0;
+
+        reset = false;
     }
 }
