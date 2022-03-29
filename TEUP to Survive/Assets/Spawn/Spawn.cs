@@ -28,9 +28,12 @@ public class Spawn : MonoBehaviour
     [SerializeField] private GameObject[] enemies;                      // enemies
 
     [SerializeField] private int numTemplatesBetweenEnemies;
+    [SerializeField] private float PROBABILITY_OF_COIN_WITH_ENEMIES;
 
     private float nextSpawn;
+    
     private int numEnemiesAllive;
+
     private int numTemplates;
     private int numTemplatesInScreen;
 
@@ -39,7 +42,9 @@ public class Spawn : MonoBehaviour
     void Start()
     {
         nextSpawn = -1f;
+
         numEnemiesAllive = 0;
+
         numTemplates = 0;
         numTemplatesInScreen = 0;
 
@@ -51,26 +56,31 @@ public class Spawn : MonoBehaviour
         if (CanSpawnEnemie()) SpawnEnemie();
         else if (CanSpawnCompleteTemplate()) SpawnCompleteTemplate();
         else if (CanSpawnCollectibleTemplate()) SpawnCollectibleTemplate();
-
-        // if (CanSpawn()) SpawnCoinTemplate();
-        // if (CanSpawn()) SpawnCompleteTemplate();
     }
 
     bool CanSpawnEnemie() {
-        return CanSpawn() && numTemplates >= numTemplatesBetweenEnemies;
+        return CanSpawn() 
+            && numTemplates >= numTemplatesBetweenEnemies
+            && !AreEnemiesAllive();
     }
 
     bool CanSpawnCompleteTemplate() {
-        return CanSpawn() && numEnemiesAllive == 0;
+        return CanSpawn() && !AreEnemiesAllive();
     }
 
     bool CanSpawnCollectibleTemplate() {
-        return CanSpawn() && numEnemiesAllive != 0;
+        return CanSpawn() && AreEnemiesAllive();
     }
 
     bool CanSpawn() {
         return Time.time > nextSpawn && numTemplates == numTemplatesInScreen;
     }
+
+    bool AreEnemiesAllive() {
+        return numEnemiesAllive != 0;
+    }
+
+    // --------------------------------------------------------------------------------------------------------------------
 
     void SpawnEnemie() {
         int enemie = Random.Range(0, enemies.Length);
@@ -78,45 +88,45 @@ public class Spawn : MonoBehaviour
         Instantiate(enemies[enemie], transform.position, transform.rotation);
 
         numEnemiesAllive++;
-        numTemplates = 0;
-        numTemplatesInScreen = 0;
     }
 
+    // --------------------------------------------------------------------------------------------------------------------
+
     void SpawnCompleteTemplate() {
+        // choose one template
         int template = Random.Range(0, completeTemplates.Length);
+
+        bool generatedTemplate = false;
 
         // spawn coins
         foreach (GameObject templateCoin in completeTemplates[template].templateCoins) {
-            if (generate()) {
-                Instantiate(templateCoin, transform.position, transform.rotation);
-                
-                numTemplates++;
+            if (generate()) { 
+                generateTemplate(templateCoin, transform.position, transform.rotation);
+                generatedTemplate = true;
             }
         }
 
         // spawn obstacles
         foreach (GameObject templateObstacle in completeTemplates[template].templateObstacles) {
             if (generate()) {
-                Instantiate(templateObstacle, transform.position, transform.rotation);
-                
-                numTemplates++;
+                generateTemplate(templateObstacle, transform.position, transform.rotation);
+                generatedTemplate = true;
             }
         }
 
         // spawn powerups
         foreach (Position position in completeTemplates[template].powerups) {
-            if (generate()) {
-                int powerup = Random.Range(0, powerupTemplates.Length);
-                
-                Instantiate(powerupTemplates[powerup].template, transform.position + new Vector3(position.x, position.y, 0), transform.rotation);
-            }
+            if (generate() && generatedTemplate) 
+                generatePowerUp(true, 
+                                transform.position + new Vector3(position.x, position.y, 0),
+                                transform.rotation);
         }
     }
 
-    void SpawnCollectibleTemplate() {
-        float PROBABILITY_OF_COIN = 0.75f;
+    // --------------------------------------------------------------------------------------------------------------------
 
-        if (Random.Range(0.0f, 1.0f) > PROBABILITY_OF_COIN) SpawnPowerUpTemplate();
+    void SpawnCollectibleTemplate() {
+        if (Random.Range(0.0f, 1.0f) > PROBABILITY_OF_COIN_WITH_ENEMIES) SpawnPowerUp();
         else SpawnCoinTemplate();
     }
 
@@ -124,23 +134,42 @@ public class Spawn : MonoBehaviour
         int coin = Random.Range(0, coinTemplates.Length);
         float y = Random.Range(coinTemplates[coin].minY, coinTemplates[coin].maxY);
 
-        Instantiate(coinTemplates[coin].template, new Vector3(transform.position.x, y, 0), coinTemplates[coin].template.transform.rotation);
-
-        numTemplates++;
+        generateTemplate(coinTemplates[coin].template, 
+                        new Vector3(transform.position.x, y, 0), 
+                        coinTemplates[coin].template.transform.rotation);
     }
 
-    void SpawnPowerUpTemplate() {
-        int powerup = Random.Range(0, powerupTemplates.Length);
-        float y = Random.Range(powerupTemplates[powerup].minY, powerupTemplates[powerup].maxY);
-
-        Instantiate(powerupTemplates[powerup].template, new Vector3(transform.position.x, y, 0), powerupTemplates[powerup].template.transform.rotation);
+    void SpawnPowerUp() {
+        generatePowerUp(false, Vector3.zero, transform.rotation);
 
         nextSpawn = Time.time + 5f;
     }
 
+    // --------------------------------------------------------------------------------------------------------------------
+
     bool generate() {
         return Random.Range(0, 2) == 1;
     }
+
+    void generateTemplate(GameObject template, Vector3 position, Quaternion rotation) {
+        Instantiate(template, position, rotation);
+
+        numTemplates++;
+    }
+
+    void generatePowerUp(bool defined, Vector3 position, Quaternion rotation) {
+        int powerup = Random.Range(0, powerupTemplates.Length);
+
+        if (!defined) {
+            float y = Random.Range(powerupTemplates[powerup].minY, powerupTemplates[powerup].maxY);
+            position = new Vector3(transform.position.x, y, 0);
+            rotation = powerupTemplates[powerup].template.transform.rotation;
+        }
+
+        Instantiate(powerupTemplates[powerup].template, position, rotation);
+    }
+
+    // ------------------------------------------------------------------------------------------------
 
     public void EnemieDied() {
         reset = true;
