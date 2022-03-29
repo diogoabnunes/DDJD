@@ -604,7 +604,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollSpeed: -2
-  speedIncrement: 0.0001
+  speedIncrement: 0.0005
 --- !u!1 &518809819
 GameObject:
   m_ObjectHideFlags: 0
@@ -1691,7 +1691,8 @@ MonoBehaviour:
     maxY: 3
   enemies:
   - {fileID: 7939817613462860966, guid: 3e835f21e37581c4b99ec32da4f9e743, type: 3}
-  numTemplatesBetweenEnemies: 4
+  - {fileID: 4877054648337649886, guid: 51a45dadcf59b1047b46f41458f4c88c, type: 3}
+  numTemplatesBetweenEnemies: 10
 --- !u!1 &1904041247
 GameObject:
   m_ObjectHideFlags: 0
