@@ -606,7 +606,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollSpeed: -2
-  speedIncrement: 0.0005
+  speedIncrement: 0.0003
 --- !u!114 &490346593
 MonoBehaviour:
   m_ObjectHideFlags: 0
