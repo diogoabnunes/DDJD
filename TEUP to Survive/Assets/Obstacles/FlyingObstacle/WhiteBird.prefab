@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5840548518186988883}
   - component: {fileID: 8352304573027934361}
   - component: {fileID: 4273895345821418579}
+  - component: {fileID: 3776713938009263524}
   m_Layer: 0
   m_Name: WhiteBirdSprite
   m_TagString: Untagged
@@ -102,6 +103,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3776713938009263524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289357969652595857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ff62cde1df4ce247b47eb575faf8bbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numOfAnimations: 2
 --- !u!1 &6062321105985182828
 GameObject:
   m_ObjectHideFlags: 0
@@ -115,7 +129,6 @@ GameObject:
   - component: {fileID: -6335961258160437918}
   - component: {fileID: -6893423735764484498}
   - component: {fileID: 2346442864788402633}
-  - component: {fileID: -6452804002306554430}
   m_Layer: 0
   m_Name: WhiteBird
   m_TagString: Obstacle
@@ -214,22 +227,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a8d71ed1af34284ea7a85d5ef47b5de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &-6452804002306554430
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6062321105985182828}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7d95133e7605f9d4c9e2157f031053d7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
