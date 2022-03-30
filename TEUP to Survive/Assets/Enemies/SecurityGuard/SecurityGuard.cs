@@ -21,6 +21,9 @@ public class SecurityGuard : MonoBehaviour
     }
 
     void TakeShot(GameObject tigerShot) {
+
+        this.gameObject.transform.GetChild(0).GetComponent<Animator>().Play("securityGuardTakingDamage", 0, 0f);
+
         if (GetComponent<SecurityGuardFire>().enabled) { // is firing
             numShotsTaken += 1f;
 
