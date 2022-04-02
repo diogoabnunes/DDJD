@@ -749,6 +749,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backgroundCollider: {fileID: 0}
   rb: {fileID: 0}
+  backgrounds:
+  - {fileID: 21300000, guid: 373fece173a96b74bae2a4891f734940, type: 3}
+  - {fileID: 21300000, guid: 20200e41d75b6d64da41017337373997, type: 3}
+  - {fileID: 21300000, guid: b227dc1a7a717444b8b76e763a8447a4, type: 3}
+  - {fileID: 21300000, guid: be64fa3c8683687419d29022580792fb, type: 3}
+  - {fileID: 21300000, guid: d82ff8412cbcc014686bd63b32e73643, type: 3}
 --- !u!50 &518809821
 Rigidbody2D:
   serializedVersion: 4
@@ -1410,6 +1416,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backgroundCollider: {fileID: 0}
   rb: {fileID: 0}
+  backgrounds:
+  - {fileID: 21300000, guid: 373fece173a96b74bae2a4891f734940, type: 3}
+  - {fileID: 21300000, guid: 20200e41d75b6d64da41017337373997, type: 3}
+  - {fileID: 21300000, guid: b227dc1a7a717444b8b76e763a8447a4, type: 3}
+  - {fileID: 21300000, guid: be64fa3c8683687419d29022580792fb, type: 3}
+  - {fileID: 21300000, guid: d82ff8412cbcc014686bd63b32e73643, type: 3}
 --- !u!50 &1326450125
 Rigidbody2D:
   serializedVersion: 4
@@ -2126,6 +2138,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backgroundCollider: {fileID: 0}
   rb: {fileID: 0}
+  backgrounds:
+  - {fileID: 21300000, guid: 373fece173a96b74bae2a4891f734940, type: 3}
+  - {fileID: 21300000, guid: 20200e41d75b6d64da41017337373997, type: 3}
+  - {fileID: 21300000, guid: b227dc1a7a717444b8b76e763a8447a4, type: 3}
+  - {fileID: 21300000, guid: be64fa3c8683687419d29022580792fb, type: 3}
+  - {fileID: 21300000, guid: d82ff8412cbcc014686bd63b32e73643, type: 3}
 --- !u!50 &2120888455
 Rigidbody2D:
   serializedVersion: 4
