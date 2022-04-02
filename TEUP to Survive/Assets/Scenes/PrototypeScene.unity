@@ -1019,7 +1019,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13bdb0a6db312c1488be42125905e2d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tigerJetPackOn: {fileID: 21300000, guid: 1d2f798d730ef9e43871f6e4f999fe11, type: 3}
+  tigerJetPackOn: {fileID: 21300000, guid: aecef4fd310e7a3429953cda171acb3b, type: 3}
 --- !u!1 &769206994
 GameObject:
   m_ObjectHideFlags: 0
@@ -1315,7 +1315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13bdb0a6db312c1488be42125905e2d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tigerJetPackOn: {fileID: 21300000, guid: cb511d2b95d24ae498572a4d50462a15, type: 3}
+  tigerJetPackOn: {fileID: 21300000, guid: 6ff51a5910a02244aa85c35c4c3d7222, type: 3}
 --- !u!212 &1181093882
 SpriteRenderer:
   m_ObjectHideFlags: 0
