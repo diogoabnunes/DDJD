@@ -4,11 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    void Start(){}
-
     public void TakeShot() {
-        Destroy(this.gameObject);
-        // POR AGORA ESTÁ A SAIR DO JOGO QUANDO PERDE!
-        UnityEditor.EditorApplication.isPlaying = false;
+        FindObjectsOfType<GameSettings>()[0].GetComponent<GameSettings>().GameOver();
     }
 }
