@@ -16,9 +16,6 @@ public class GameSettings : MonoBehaviour
     public void GameOver() {
         // load new high score menu
         if (isNewHighScore()) {
-            // Scene scene = SceneManager.GetSceneByBuildIndex(2);
-            // GameObject[] rootObjects = scene.GetRootGameObjects();
-            // Debug.Log(scene);
             SceneManager.LoadScene(3);
         }
         // load game over menu
