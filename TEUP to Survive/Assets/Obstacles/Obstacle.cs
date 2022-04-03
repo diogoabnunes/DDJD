@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
+    private GameObject gameSettings;
     private GameObject player;
 
     void Start()
@@ -15,9 +16,7 @@ public class Obstacle : MonoBehaviour
         if(collision.tag == "LeftBorder"){
             Destroy(this.gameObject);
         }else if (collision.tag == "Player" && (!player.GetComponent<PlayerPowerUps>().IsUnstoppable())){
-            Destroy(player.gameObject);
-            // POR AGORA ESTÁ A SAIR DO JOGO QUANDO PERDE!
-            UnityEditor.EditorApplication.isPlaying = false;
+            FindObjectsOfType<GameSettings>()[0].GetComponent<GameSettings>().GameOver();
         }
     }
 }
