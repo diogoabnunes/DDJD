@@ -990,7 +990,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollSpeed: -2
-  speedIncrement: 0.0005
+  speedIncrement: 0.0003
 --- !u!114 &490346593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1212,6 +1212,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backgroundCollider: {fileID: 0}
   rb: {fileID: 0}
+  backgrounds:
+  - {fileID: 21300000, guid: 373fece173a96b74bae2a4891f734940, type: 3}
+  - {fileID: 21300000, guid: 20200e41d75b6d64da41017337373997, type: 3}
+  - {fileID: 21300000, guid: b227dc1a7a717444b8b76e763a8447a4, type: 3}
+  - {fileID: 21300000, guid: be64fa3c8683687419d29022580792fb, type: 3}
+  - {fileID: 21300000, guid: d82ff8412cbcc014686bd63b32e73643, type: 3}
 --- !u!50 &518809821
 Rigidbody2D:
   serializedVersion: 4
@@ -1643,7 +1649,7 @@ GameObject:
   m_Component:
   - component: {fileID: 619384354}
   - component: {fileID: 619384355}
-  - component: {fileID: 619384356}
+  - component: {fileID: 619384357}
   m_Layer: 0
   m_Name: TigerJetPackOff
   m_TagString: Untagged
@@ -1716,14 +1722,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &619384356
-MonoBehaviour:
+--- !u!95 &619384357
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 619384353}
   m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1464277fa91a78b4696ce5245a378928, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13bdb0a6db312c1488be42125905e2d6, type: 3}
   m_Name: 
@@ -2441,8 +2458,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1181093880}
   - component: {fileID: 1181093882}
-  - component: {fileID: 1181093881}
   - component: {fileID: 1181093883}
+  - component: {fileID: 1181093881}
   m_Layer: 0
   m_Name: TigerContinuousFire
   m_TagString: ContinuousFireEffect
@@ -2464,19 +2481,25 @@ Transform:
   m_Father: {fileID: 2106893615}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1181093881
-MonoBehaviour:
+--- !u!95 &1181093881
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1181093879}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13bdb0a6db312c1488be42125905e2d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tigerJetPackOn: {fileID: 21300000, guid: cb511d2b95d24ae498572a4d50462a15, type: 3}
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4eaef55011aa28a429000042814058a1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!212 &1181093882
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2577,6 +2600,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backgroundCollider: {fileID: 0}
   rb: {fileID: 0}
+  backgrounds:
+  - {fileID: 21300000, guid: 373fece173a96b74bae2a4891f734940, type: 3}
+  - {fileID: 21300000, guid: 20200e41d75b6d64da41017337373997, type: 3}
+  - {fileID: 21300000, guid: b227dc1a7a717444b8b76e763a8447a4, type: 3}
+  - {fileID: 21300000, guid: be64fa3c8683687419d29022580792fb, type: 3}
+  - {fileID: 21300000, guid: d82ff8412cbcc014686bd63b32e73643, type: 3}
 --- !u!50 &1326450125
 Rigidbody2D:
   serializedVersion: 4
@@ -4352,6 +4381,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backgroundCollider: {fileID: 0}
   rb: {fileID: 0}
+  backgrounds:
+  - {fileID: 21300000, guid: 373fece173a96b74bae2a4891f734940, type: 3}
+  - {fileID: 21300000, guid: 20200e41d75b6d64da41017337373997, type: 3}
+  - {fileID: 21300000, guid: b227dc1a7a717444b8b76e763a8447a4, type: 3}
+  - {fileID: 21300000, guid: be64fa3c8683687419d29022580792fb, type: 3}
+  - {fileID: 21300000, guid: d82ff8412cbcc014686bd63b32e73643, type: 3}
 --- !u!50 &2120888455
 Rigidbody2D:
   serializedVersion: 4

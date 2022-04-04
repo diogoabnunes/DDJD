@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Collectible : MonoBehaviour
 {
+    [SerializeField] GameObject scorePopUp;
     private ScoreManager scoreCanvas;
     private float pointsPerCollectible = 10f;
     private CollectibleMovement collectibleMovement;
@@ -19,6 +20,8 @@ public class Collectible : MonoBehaviour
             Destroy(this.gameObject);
         }
         else if (collision.tag == "Player") {
+            GameObject scorePopup = Instantiate(scorePopUp, transform.position, Quaternion.identity) as GameObject;
+            scorePopup.transform.GetChild(0).GetComponent<TextMesh>().text = "+10";
             Destroy(this.gameObject);
             scoreCanvas.score += (int)pointsPerCollectible;
             scoreCanvas.scoreText.text = (int)scoreCanvas.score + "";
