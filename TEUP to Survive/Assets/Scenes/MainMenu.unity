@@ -1952,7 +1952,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1388672667
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1989,8 +1989,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a580ee81570cae43b75651135a3cefd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leaderboardContainer: {fileID: 1494800152}
-  leaderboardEntryTemplate: {fileID: 1137272274}
 --- !u!1 &1406316141
 GameObject:
   m_ObjectHideFlags: 0
@@ -2965,7 +2963,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1819583777
 Transform:
   m_ObjectHideFlags: 0
