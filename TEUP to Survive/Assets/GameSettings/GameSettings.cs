@@ -24,8 +24,7 @@ public class GameSettings : MonoBehaviour
         }
     }
 
-    bool isNewHighScore() {
-        // to implement
+    public bool isNewHighScore() {
         return true;
     }
 }
