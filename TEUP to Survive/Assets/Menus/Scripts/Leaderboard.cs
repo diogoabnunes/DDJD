@@ -11,48 +11,45 @@ class LeaderboardEntry {
 
 public class Leaderboard : MonoBehaviour
 {
-    private LeaderboardEntry[] leaderboardEntries;
+    private Transform entryContainer;
+    private Transform entryTemplate;
+    private List<LeaderboardEntry> highscoreEntryList;
+    private List<Transform> highscoreEntryTransformList;
+    private int leaderboardHeight = 35;
 
-    [SerializeField] private GameObject leaderboardContainer;
-    [SerializeField] private GameObject leaderboardEntryTemplate;
-
-    void Start()
+    private void Awake()
     {
-        leaderboardEntries = new LeaderboardEntry[5];
+        entryContainer = transform.Find("LeaderboardContainer");
+        entryTemplate = entryContainer.Find("LeaderboardEntryTemplate");
+    
+        entryTemplate.gameObject.SetActive(false);
 
-        LoadLeaderboard();
-        ShowLeaderboard();
+        highscoreEntryList = new List<LeaderboardEntry>() {
+            new LeaderboardEntry{ position = 1, name = "Diogo1", score = 123 },
+            new LeaderboardEntry{ position = 1, name = "Diogo2", score = 121 },
+            new LeaderboardEntry{ position = 1, name = "Diogo3", score = 99 },
+            new LeaderboardEntry{ position = 1, name = "Diogo4", score = 10 },
+            new LeaderboardEntry{ position = 1, name = "Diogo5", score = 1 },
+        };
+
+        highscoreEntryTransformList = new List<Transform>();
+        foreach (LeaderboardEntry highscoreEntry in highscoreEntryList) {
+            CreateHighscoreEntryTransform(highscoreEntry, entryContainer, highscoreEntryTransformList);
+        }
     }
 
-    void LoadLeaderboard() {
-        // dummy code
-        for (int i = 0; i < 5; i++) {
-            LeaderboardEntry entry = new LeaderboardEntry();
-            entry.position = i + 1;
-            entry.name = "jonny" + i.ToString();
-            entry.score = 99999 + i;
+    private void CreateHighscoreEntryTransform(LeaderboardEntry leaderboardEntry, Transform container, List<Transform> transformList) {
+        // instantiate leaderboard entry
+        Transform entryTransform = Instantiate(entryTemplate, container);
+        RectTransform entryRectTransform = entryTransform.GetComponent<RectTransform>();
+        entryRectTransform.anchoredPosition = new Vector2(0, -leaderboardHeight * transformList.Count);
+        entryTransform.gameObject.SetActive(true);
 
-            leaderboardEntries[i] = entry;
-        }
-        // read from file....
-    }
-
-    void ShowLeaderboard() {
-        int leaderboardHeight = 35;
-
-        for (int i = 0; i < 5; i++) {
-            // instantiate leaderboard entry
-            GameObject entry = Instantiate(leaderboardEntryTemplate, leaderboardContainer.transform);
-            RectTransform entryRectTransform = entry.transform.GetComponent<RectTransform>();
-            entryRectTransform.anchoredPosition = new Vector2(0, -leaderboardHeight * i);
-
-            // enable entry
-            entry.SetActive(true);
-
-            // update leaderboard entry
-            entry.transform.Find("Pos").GetComponent<Text>().text = leaderboardEntries[i].position.ToString() + ".";
-            entry.transform.Find("Name").GetComponent<Text>().text = leaderboardEntries[i].name.ToString();
-            entry.transform.Find("Score").GetComponent<Text>().text = leaderboardEntries[i].score.ToString();
-        }
+        // update leaderboard entry
+        entryTransform.Find("Pos").GetComponent<Text>().text = leaderboardEntry.position.ToString() + ".";
+        entryTransform.Find("Name").GetComponent<Text>().text = leaderboardEntry.name.ToString();
+        entryTransform.Find("Score").GetComponent<Text>().text = leaderboardEntry.score.ToString();
+    
+        transformList.Add(entryTransform);
     }
 }
