@@ -25,6 +25,10 @@ public class GameSettings : MonoBehaviour
     }
 
     public bool isNewHighScore() {
+        // getActualScore
+        // getLeaderboard (Highscores)
+        // return actualScore >= Highscores[4] (5th best play)
+        
         return true;
     }
 }

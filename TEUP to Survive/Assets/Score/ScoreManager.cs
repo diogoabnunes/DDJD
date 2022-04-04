@@ -19,6 +19,8 @@ public class ScoreManager : MonoBehaviour
     void Start()
     {
         score = 0f;
+        PlayerPrefs.SetString("score", (int)score + "");
+        PlayerPrefs.Save();
     }
 
     // Update is called once per frame
@@ -26,11 +28,15 @@ public class ScoreManager : MonoBehaviour
     {
         scoreText.text = (int)score + "";
         score += pointsPerSecond * Time.deltaTime;
+        PlayerPrefs.SetString("score", (int)score + "");
+        PlayerPrefs.Save();
     }
 
     public void AddPoints(int points)
     {
         score += (int)points;
         scoreText.text = (int)score + "";
+        PlayerPrefs.SetString("score", (int)score + "");
+        PlayerPrefs.Save();
     }
 }

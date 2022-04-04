@@ -20,15 +20,15 @@ public class NewHighScore : MonoBehaviour
 
         if (name == "") return;
 
-        SaveHighScore();
+        SaveHighScore(name);
 
         // load game over
         SceneManager.LoadScene(2);
     }
 
-    public void SaveHighScore() {
+    public void SaveHighScore(string name) {
         Debug.Log("Add high score");
 
-        // to implement
+        // getActualScore and call Leaderboard.AddHighscoreEntry(actualScore, name)
     }
 }

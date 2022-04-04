@@ -86,7 +86,7 @@ public class Leaderboard : MonoBehaviour
         transformList.Add(entryTransform);
     }
 
-    private void AddHighscoreEntry(int position, int score, string name) {
+    public void AddHighscoreEntry(int score, string name) {
         // Create LeaderboardEntry
         LeaderboardEntry highscoreEntry = new LeaderboardEntry { score = score, name = name };
     
