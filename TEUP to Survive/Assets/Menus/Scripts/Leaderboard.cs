@@ -3,44 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-class LeaderboardEntry {
-    public int position;
-    public string name;
-    public int score;
-}
-
 public class Leaderboard : MonoBehaviour
 {
-    private LeaderboardEntry[] leaderboardEntries;
-
     [SerializeField] private GameObject leaderboardContainer;
     [SerializeField] private GameObject leaderboardEntryTemplate;
 
-    void Start()
+    void Awake()
     {
-        leaderboardEntries = new LeaderboardEntry[5];
-
-        LoadLeaderboard();
+        LeaderboardManager.LoadLeaderboard();
         ShowLeaderboard();
-    }
-
-    void LoadLeaderboard() {
-        // dummy code
-        for (int i = 0; i < 5; i++) {
-            LeaderboardEntry entry = new LeaderboardEntry();
-            entry.position = i + 1;
-            entry.name = "jonny" + i.ToString();
-            entry.score = 99999 + i;
-
-            leaderboardEntries[i] = entry;
-        }
-        // read from file....
     }
 
     void ShowLeaderboard() {
         int leaderboardHeight = 35;
+        List<LeaderboardEntry> leaderboard = LeaderboardManager.GetLeaderboard();
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < leaderboard.Count; i++) {            
             // instantiate leaderboard entry
             GameObject entry = Instantiate(leaderboardEntryTemplate, leaderboardContainer.transform);
             RectTransform entryRectTransform = entry.transform.GetComponent<RectTransform>();
@@ -50,9 +28,11 @@ public class Leaderboard : MonoBehaviour
             entry.SetActive(true);
 
             // update leaderboard entry
-            entry.transform.Find("Pos").GetComponent<Text>().text = leaderboardEntries[i].position.ToString() + ".";
-            entry.transform.Find("Name").GetComponent<Text>().text = leaderboardEntries[i].name.ToString();
-            entry.transform.Find("Score").GetComponent<Text>().text = leaderboardEntries[i].score.ToString();
+            entry.transform.Find("Pos").GetComponent<Text>().text = (i + 1).ToString() + ".";
+            Debug.Log(leaderboard[i].name.ToString());
+            Debug.Log(leaderboard[i].score.ToString());
+            entry.transform.Find("Name").GetComponent<Text>().text = leaderboard[i].name.ToString();
+            entry.transform.Find("Score").GetComponent<Text>().text = leaderboard[i].score.ToString();
         }
     }
 }

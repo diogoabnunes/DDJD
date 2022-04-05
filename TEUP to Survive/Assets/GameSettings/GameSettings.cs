@@ -14,18 +14,16 @@ public class GameSettings : MonoBehaviour
     }
 
     public void GameOver() {
+        int score = (int) FindObjectsOfType<ScoreManager>()[0].score;
+
         // load new high score menu
-        if (isNewHighScore()) {
+        if (LeaderboardManager.IsNewHighScore(score)) {
+            LeaderboardManager.newHighscore = score;
             SceneManager.LoadScene(3);
         }
         // load game over menu
         else {
             SceneManager.LoadScene(2);
         }
-    }
-
-    bool isNewHighScore() {
-        // to implement
-        return true;
     }
 }
