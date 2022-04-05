@@ -6,12 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class NewHighScore : MonoBehaviour
 {
-    [SerializeField] private GameObject nextMenu;
     [SerializeField] private GameObject input;
+    [SerializeField] private GameObject score;
 
     private string name;
 
     void Start() {
+        // set score in screen
+        score.GetComponent<Text>().text = LeaderboardManager.newHighscore.ToString();
+
         name = "";
     }
 
@@ -27,8 +30,6 @@ public class NewHighScore : MonoBehaviour
     }
 
     public void SaveHighScore() {
-        Debug.Log("Add high score");
-
-        // to implement
+        LeaderboardManager.AddNewHighScore(name);
     }
 }
