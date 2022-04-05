@@ -22,7 +22,7 @@ public static class LeaderboardManager
         // read info from file
         string[] lines = System.IO.File.ReadAllLines(@".\Assets\Leaderboard\Leaderboard.txt");
         foreach (string line in lines) {
-            string[] content = line.Split(' ');
+            string[] content = line.Split(',');
             leaderboard.Add(new LeaderboardEntry(content[0], Int32.Parse(content[1])));
         }
     }
@@ -31,7 +31,7 @@ public static class LeaderboardManager
         // write info into file
         List<string> content = new List<string>();
         foreach (LeaderboardEntry entry in leaderboard) {
-            string line = entry.name + " " + entry.score.ToString();
+            string line = entry.name + ',' + entry.score.ToString();
             content.Add(line);
         }
 
