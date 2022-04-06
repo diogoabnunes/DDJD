@@ -1,2 +1,2 @@
-Source: 
-Game: 
+Source: https://github.com/diogoabnunes/DDJD/blob/main/PP/Files/DDJD-PP-GA1-TEUP%20to%20Survive-source.zip
+Game: https://github.com/diogoabnunes/DDJD/raw/main/PP/Files/DDJD-PP-GA1-TEUP%20to%20Survive-game.zip
