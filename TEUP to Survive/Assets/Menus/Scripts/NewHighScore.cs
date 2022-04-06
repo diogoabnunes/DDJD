@@ -9,7 +9,7 @@ public class NewHighScore : MonoBehaviour
     [SerializeField] private GameObject input;
     [SerializeField] private GameObject score;
 
-    private string name;
+    new private string name;
 
     void Start() {
         // set score in screen
