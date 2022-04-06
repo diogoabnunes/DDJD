@@ -15,12 +15,19 @@ public static class LeaderboardManager
         return leaderboard.Count > 0;
     }
 
+    private static void CreateFileIfNeeded() {
+        if(!System.IO.File.Exists(System.IO.Path.Combine(Application.persistentDataPath + "/Leaderboard.txt")))
+            System.IO.File.Create(System.IO.Path.Combine(Application.persistentDataPath + "/Leaderboard.txt"));
+    }
+    
     public static void LoadLeaderboard() {
+        CreateFileIfNeeded();
+
         // verify if it was already loaded
         if (IsLoaded()) return;
 
         // read info from file
-        string[] lines = System.IO.File.ReadAllLines(@".\Assets\Leaderboard\Leaderboard.txt");
+        string[] lines = System.IO.File.ReadAllLines(System.IO.Path.Combine(Application.persistentDataPath + "/Leaderboard.txt"));
         foreach (string line in lines) {
             string[] content = line.Split(',');
             leaderboard.Add(new LeaderboardEntry(content[0], Int32.Parse(content[1])));
@@ -35,7 +42,7 @@ public static class LeaderboardManager
             content.Add(line);
         }
 
-        System.IO.File.WriteAllLines(@".\Assets\Leaderboard\Leaderboard.txt", content);
+        System.IO.File.WriteAllLines(System.IO.Path.Combine(Application.persistentDataPath + "/Leaderboard.txt"), content);
     }
 
     public static List<LeaderboardEntry> GetLeaderboard() {

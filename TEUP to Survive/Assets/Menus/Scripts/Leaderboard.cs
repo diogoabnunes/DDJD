@@ -29,8 +29,6 @@ public class Leaderboard : MonoBehaviour
 
             // update leaderboard entry
             entry.transform.Find("Pos").GetComponent<Text>().text = (i + 1).ToString() + ".";
-            Debug.Log(leaderboard[i].name.ToString());
-            Debug.Log(leaderboard[i].score.ToString());
             entry.transform.Find("Name").GetComponent<Text>().text = leaderboard[i].name.ToString();
             entry.transform.Find("Score").GetComponent<Text>().text = leaderboard[i].score.ToString();
         }
