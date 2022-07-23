@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Ground
+  - Enemy
+  - Objects
+  - PlayerWeapon
+  - TerrainElement
+  - AcidPool
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Player
+  - Water
+  - UI
+  - Ground
+  - GFX
+  - Player
+  - Objects
+  - Glow
+  - LandEnemy
+  - FlyingEnemy
+  - Items
+  - LayerMask
+  - SeeThrough
+  - BossEnemy
+  - Spawner
+  - Obstacle
+  - IgnoreBullets
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0

@@ -1,0 +1,71 @@
+{
+    "name": "Dante's Descent",
+    "description": "Dante's Descent | DDJD | Group 4",
+    "year": "2022",
+    "authors": [
+        {
+            "name": "Bernardo Ramalho",
+            "role": "Developer"
+        },
+        {
+            "name": "Diogo Nunes",
+            "role": "Developer"
+        },
+        {
+            "name": "Diogo Santos",
+            "role": "Developer"
+        },
+        {
+            "name": "João Rocha",
+            "role": "Developer"
+        },
+        {
+            "name": "João Rosário",
+            "role": "Developer"
+        },
+        {
+            "name": "Marcelo Reis",
+            "role": "Developer"
+        },
+        {
+            "name": "Pedro Neves",
+            "role": "3D Modeller"
+        },
+        {
+            "name": "Clara Tapadas",
+            "role": "Sound Designer"
+        },
+        {
+            "name": "Natália Santos",
+            "role": "Sound Designer"
+        }
+    ],
+    "genres": [
+        "Action",
+        "Roguelike",
+        "Third-Person Shooter"
+    ],
+    "operative_system": [
+        "Windows"
+    ],
+    "executables": [
+        "Dante's Descent.exe"
+    ],
+    "UC": "DDJD",
+    "website": "https://diogoabnunes.itch.io/dantes-descent",
+    "icon": "icon.png",
+    "media": [
+        {
+            "filename": "screenshot1.png",
+            "media_type": "image"
+        },
+        {
+            "filename": "screenshot2.png",
+            "media_type": "image"
+        },
+        {
+            "filename": "video1.vid",
+            "media_type": "video"
+        }
+    ]
+}
